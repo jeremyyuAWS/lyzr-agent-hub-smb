@@ -529,17 +529,6 @@ const AdminSettings: React.FC = () => {
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-2">
                   <h4 className="font-semibold text-black text-lg">{agent.name}</h4>
-                  {agent.demo_url && (
-                    <a
-                      href={agent.demo_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors"
-                      title="View Live Demo"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
                 </div>
                 
                 <div className="flex items-center space-x-2 mb-3">
