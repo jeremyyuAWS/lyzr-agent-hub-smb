@@ -1,0 +1,47 @@
+[
+  {
+    "id": "si_001",
+    "name": "TechFlow Solutions",
+    "smbs": 28,
+    "agentCalls": 2140,
+    "revenue": 12680,
+    "status": "active",
+    "licenses": 15
+  },
+  {
+    "id": "si_002", 
+    "name": "CloudPro Services",
+    "smbs": 35,
+    "agentCalls": 2890,
+    "revenue": 18750,
+    "status": "active",
+    "licenses": 20
+  },
+  {
+    "id": "si_003",
+    "name": "DataSync Partners",
+    "smbs": 19,
+    "agentCalls": 1560,
+    "revenue": 9440,
+    "status": "active", 
+    "licenses": 12
+  },
+  {
+    "id": "si_004",
+    "name": "NetSecure Ltd",
+    "smbs": 42,
+    "agentCalls": 3210,
+    "revenue": 21890,
+    "status": "active",
+    "licenses": 25
+  },
+  {
+    "id": "si_005",
+    "name": "InnoTech Hub",
+    "smbs": 31,
+    "agentCalls": 2380,
+    "revenue": 15670,
+    "status": "active",
+    "licenses": 18
+  }
+]

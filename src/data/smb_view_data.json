@@ -1,0 +1,80 @@
+{
+  "companyInfo": {
+    "name": "Global Dynamics",
+    "id": "smb_004", 
+    "industry": "Manufacturing",
+    "siPartner": "CloudPro Services",
+    "joinDate": "2023-06-20",
+    "planType": "Professional"
+  },
+  "metrics": {
+    "totalUsers": 24,
+    "activeUsers": 22,
+    "allocatedLicenses": 8,
+    "usedLicenses": 6,
+    "monthlyAgentCalls": 198,
+    "costSavings": 12600,
+    "timeReduction": 45,
+    "productivityGain": 32
+  },
+  "teamUsage": [
+    {
+      "department": "Finance",
+      "users": 6,
+      "agentCalls": 78,
+      "favoriteAgent": "Finance Agent", 
+      "savings": 4200,
+      "efficiency": 89
+    },
+    {
+      "department": "Marketing",
+      "users": 8,
+      "agentCalls": 89,
+      "favoriteAgent": "Marketing Agent",
+      "savings": 5600,
+      "efficiency": 82
+    },
+    {
+      "department": "Operations", 
+      "users": 5,
+      "agentCalls": 31,
+      "favoriteAgent": "Operations Agent",
+      "savings": 2800,
+      "efficiency": 76
+    }
+  ],
+  "personalizedAgents": [
+    {
+      "id": "finance_agent",
+      "name": "Finance Agent",
+      "usageCount": 78,
+      "avgResponseTime": "2.1s",
+      "satisfaction": 94,
+      "lastUsed": "2024-01-15"
+    },
+    {
+      "id": "marketing_agent", 
+      "name": "Marketing Agent",
+      "usageCount": 89,
+      "avgResponseTime": "1.8s",
+      "satisfaction": 91,
+      "lastUsed": "2024-01-14"
+    },
+    {
+      "id": "operations_agent",
+      "name": "Operations Agent", 
+      "usageCount": 31,
+      "avgResponseTime": "2.5s",
+      "satisfaction": 87,
+      "lastUsed": "2024-01-13"
+    }
+  ],
+  "usageTrends": [
+    { "month": "Jul", "calls": 120, "users": 18, "savings": 8900 },
+    { "month": "Aug", "calls": 142, "users": 20, "savings": 9800 },
+    { "month": "Sep", "calls": 165, "users": 22, "savings": 10600 },
+    { "month": "Oct", "calls": 178, "users": 23, "savings": 11400 },
+    { "month": "Nov", "calls": 185, "users": 24, "savings": 12100 },
+    { "month": "Dec", "calls": 198, "users": 24, "savings": 12600 }
+  ]
+}

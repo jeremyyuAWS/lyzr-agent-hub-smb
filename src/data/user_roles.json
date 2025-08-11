@@ -1,0 +1,59 @@
+{
+  "roles": {
+    "msp_admin": {
+      "level": 0,
+      "name": "MSP Super Admin",
+      "permissions": [
+        "manage_sis",
+        "view_all_analytics",
+        "set_global_pricing",
+        "manage_licenses",
+        "view_revenue",
+        "configure_platform"
+      ],
+      "description": "Full platform control, onboard SIs, set pricing"
+    },
+    "si_admin": {
+      "level": 1,
+      "name": "System Integrator Admin",
+      "permissions": [
+        "manage_smbs",
+        "allocate_licenses",
+        "white_label_config",
+        "view_si_analytics",
+        "manage_billing"
+      ],
+      "description": "Manage SMB tenants, configure branding"
+    },
+    "smb_owner": {
+      "level": 2,
+      "name": "SMB Owner/Super Admin",
+      "permissions": [
+        "manage_users",
+        "configure_billing",
+        "view_usage",
+        "assign_agent_roles"
+      ],
+      "description": "Full SMB tenant control, manage users"
+    },
+    "smb_admin": {
+      "level": 2.5,
+      "name": "SMB Admin",
+      "permissions": [
+        "manage_users",
+        "view_usage",
+        "configure_data_sources"
+      ],
+      "description": "User management, usage monitoring"
+    },
+    "smb_user": {
+      "level": 3,
+      "name": "SMB User",
+      "permissions": [
+        "use_agents",
+        "view_personal_history"
+      ],
+      "description": "Launch agents, view personal outputs"
+    }
+  }
+}

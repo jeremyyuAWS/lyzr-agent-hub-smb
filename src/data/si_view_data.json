@@ -1,0 +1,67 @@
+{
+  "siInfo": {
+    "name": "CloudPro Services",
+    "id": "si_002",
+    "joinDate": "2023-03-15",
+    "tier": "Premium Partner"
+  },
+  "metrics": {
+    "smbClients": 35,
+    "allocatedLicenses": 20,
+    "usedLicenses": 18,
+    "availableLicenses": 2,
+    "monthlyRevenue": 18750,
+    "utilizationRate": 90,
+    "growthRate": 25.2,
+    "avgRevenuePerSMB": 536
+  },
+  "smbPortfolio": [
+    {
+      "id": "smb_004",
+      "name": "Global Dynamics",
+      "industry": "Manufacturing",
+      "licenses": 8,
+      "users": 24,
+      "agentCalls": 198,
+      "monthlyRevenue": 4950,
+      "favoriteAgent": "Marketing Agent",
+      "lastActive": "2024-01-15",
+      "status": "active",
+      "growthTrend": "up"
+    },
+    {
+      "id": "smb_005", 
+      "name": "Omega Corp",
+      "industry": "Technology",
+      "licenses": 6,
+      "users": 18,
+      "agentCalls": 167,
+      "monthlyRevenue": 4175,
+      "favoriteAgent": "Finance Agent",
+      "lastActive": "2024-01-15", 
+      "status": "active",
+      "growthTrend": "up"
+    },
+    {
+      "id": "smb_006",
+      "name": "Sigma Systems", 
+      "industry": "Healthcare",
+      "licenses": 4,
+      "users": 11,
+      "agentCalls": 134,
+      "monthlyRevenue": 3350,
+      "favoriteAgent": "Operations Agent",
+      "lastActive": "2024-01-12",
+      "status": "active", 
+      "growthTrend": "stable"
+    }
+  ],
+  "agentUsageByClients": [
+    { "month": "Jul", "calls": 1890, "revenue": 14250 },
+    { "month": "Aug", "calls": 2140, "revenue": 15900 },
+    { "month": "Sep", "calls": 2350, "revenue": 16800 },
+    { "month": "Oct", "calls": 2580, "revenue": 17600 },
+    { "month": "Nov", "calls": 2720, "revenue": 18200 },
+    { "month": "Dec", "calls": 2890, "revenue": 18750 }
+  ]
+}

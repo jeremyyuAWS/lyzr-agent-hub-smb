@@ -1,0 +1,147 @@
+{
+  "msp": {
+    "id": "msp_001",
+    "name": "Lyzr Technologies",
+    "type": "MSP",
+    "totalSIs": 47,
+    "totalSMBs": 284,
+    "totalUsers": 1247,
+    "totalLicenses": 850,
+    "availableLicenses": 150,
+    "monthlyRevenue": 89450
+  },
+  "hierarchy": [
+    {
+      "si": {
+        "id": "si_001",
+        "name": "TechFlow Solutions",
+        "licenses": 15,
+        "usedLicenses": 12,
+        "smbs": 28,
+        "users": 156,
+        "revenue": 12680,
+        "status": "active"
+      },
+      "smbList": [
+        {
+          "id": "smb_001",
+          "name": "Acme Corp",
+          "licenses": 5,
+          "users": 12,
+          "agentCalls": 145,
+          "favoriteAgent": "Finance Agent",
+          "lastActive": "2024-01-15",
+          "status": "active"
+        },
+        {
+          "id": "smb_002",
+          "name": "Alpha Industries",
+          "licenses": 3,
+          "users": 8,
+          "agentCalls": 89,
+          "favoriteAgent": "Marketing Agent",
+          "lastActive": "2024-01-14",
+          "status": "active"
+        },
+        {
+          "id": "smb_003",
+          "name": "Beta Solutions",
+          "licenses": 4,
+          "users": 15,
+          "agentCalls": 123,
+          "favoriteAgent": "Legal Agent",
+          "lastActive": "2024-01-13",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "si": {
+        "id": "si_002",
+        "name": "CloudPro Services",
+        "licenses": 20,
+        "usedLicenses": 18,
+        "smbs": 35,
+        "users": 203,
+        "revenue": 18750,
+        "status": "active"
+      },
+      "smbList": [
+        {
+          "id": "smb_004",
+          "name": "Global Dynamics",
+          "licenses": 8,
+          "users": 24,
+          "agentCalls": 198,
+          "favoriteAgent": "Marketing Agent",
+          "lastActive": "2024-01-14",
+          "status": "active"
+        },
+        {
+          "id": "smb_005",
+          "name": "Omega Corp",
+          "licenses": 6,
+          "users": 18,
+          "agentCalls": 167,
+          "favoriteAgent": "Finance Agent",
+          "lastActive": "2024-01-15",
+          "status": "active"
+        },
+        {
+          "id": "smb_006",
+          "name": "Sigma Systems",
+          "licenses": 4,
+          "users": 11,
+          "agentCalls": 134,
+          "favoriteAgent": "Operations Agent",
+          "lastActive": "2024-01-12",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "si": {
+        "id": "si_003",
+        "name": "DataSync Partners",
+        "licenses": 12,
+        "usedLicenses": 10,
+        "smbs": 19,
+        "users": 98,
+        "revenue": 9440,
+        "status": "active"
+      },
+      "smbList": [
+        {
+          "id": "smb_007",
+          "name": "Stellar Industries",
+          "licenses": 5,
+          "users": 14,
+          "agentCalls": 87,
+          "favoriteAgent": "Legal Agent",
+          "lastActive": "2024-01-13",
+          "status": "active"
+        },
+        {
+          "id": "smb_008",
+          "name": "Nova Enterprises",
+          "licenses": 3,
+          "users": 9,
+          "agentCalls": 76,
+          "favoriteAgent": "Support Agent",
+          "lastActive": "2024-01-11",
+          "status": "active"
+        },
+        {
+          "id": "smb_009",
+          "name": "Zenith Corp",
+          "licenses": 2,
+          "users": 6,
+          "agentCalls": 45,
+          "favoriteAgent": "HR Agent",
+          "lastActive": "2024-01-10",
+          "status": "active"
+        }
+      ]
+    }
+  ]
+}

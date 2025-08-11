@@ -1,0 +1,16 @@
+{
+  "totalROI": 340,
+  "costSavings": 125000,
+  "timeReduction": 67,
+  "errorReduction": 89,
+  "customerSatisfaction": 94,
+  "agentEfficiency": 78,
+  "monthlyTrends": [
+    { "month": "Jul", "roi": 280, "costs": 15600, "savings": 18200 },
+    { "month": "Aug", "roi": 295, "costs": 16200, "savings": 19800 },
+    { "month": "Sep", "roi": 315, "costs": 17100, "savings": 21400 },
+    { "month": "Oct", "roi": 325, "costs": 18000, "savings": 23100 },
+    { "month": "Nov", "roi": 335, "costs": 18900, "savings": 24800 },
+    { "month": "Dec", "roi": 340, "costs": 19800, "savings": 26200 }
+  ]
+}

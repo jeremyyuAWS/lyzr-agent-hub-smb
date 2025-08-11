@@ -1,0 +1,149 @@
+{
+  "ecosystem_overview": {
+    "total_agent_calls": 15672,
+    "successful_executions": 14890,
+    "success_rate": 95.0,
+    "avg_response_time": 2.3,
+    "total_output_generated": "2.4TB",
+    "top_performing_agents": [
+      {
+        "agent_id": "support_agent",
+        "name": "Support Agent",
+        "calls": 3890,
+        "success_rate": 98.2,
+        "avg_response_time": 1.2,
+        "adoption_rate": 94,
+        "revenue_impact": 156000
+      },
+      {
+        "agent_id": "finance_agent", 
+        "name": "Finance Agent",
+        "calls": 3420,
+        "success_rate": 96.8,
+        "avg_response_time": 2.3,
+        "adoption_rate": 89,
+        "revenue_impact": 142000
+      },
+      {
+        "agent_id": "marketing_agent",
+        "name": "Marketing Agent",
+        "calls": 2890,
+        "success_rate": 94.5,
+        "avg_response_time": 1.9,
+        "adoption_rate": 78,
+        "revenue_impact": 128000
+      }
+    ],
+    "agent_category_performance": [
+      { "category": "Support", "calls": 3890, "growth": 28.5, "satisfaction": 4.8 },
+      { "category": "Finance", "calls": 3420, "growth": 23.2, "satisfaction": 4.7 },
+      { "category": "Marketing", "calls": 2890, "growth": 19.8, "satisfaction": 4.6 },
+      { "category": "Operations", "calls": 2145, "growth": 15.4, "satisfaction": 4.5 },
+      { "category": "Security", "calls": 2420, "growth": 22.1, "satisfaction": 4.7 },
+      { "category": "Legal", "calls": 2180, "growth": 12.8, "satisfaction": 4.4 }
+    ]
+  },
+  "si_agent_metrics": {
+    "si_id": "si_002",
+    "si_name": "CloudPro Services", 
+    "total_deployments": 156,
+    "active_agents": 9,
+    "client_adoption_rate": 87.5,
+    "avg_onboarding_time": "3.2 days",
+    "client_satisfaction": 4.6,
+    "agent_deployment_by_client": [
+      {
+        "smb_id": "smb_004",
+        "smb_name": "Global Dynamics",
+        "deployed_agents": 6,
+        "most_used": "Marketing Agent",
+        "satisfaction": 4.8,
+        "monthly_usage": 198,
+        "onboarding_date": "2023-06-20"
+      },
+      {
+        "smb_id": "smb_005", 
+        "smb_name": "Omega Corp",
+        "deployed_agents": 4,
+        "most_used": "Finance Agent",
+        "satisfaction": 4.7,
+        "monthly_usage": 167,
+        "onboarding_date": "2023-07-15"
+      },
+      {
+        "smb_id": "smb_006",
+        "smb_name": "Sigma Systems",
+        "deployed_agents": 5,
+        "most_used": "Operations Agent", 
+        "satisfaction": 4.5,
+        "monthly_usage": 134,
+        "onboarding_date": "2023-08-10"
+      }
+    ],
+    "deployment_success_rates": [
+      { "agent": "Finance Agent", "success_rate": 96, "avg_setup_time": "2.1 hours" },
+      { "agent": "Marketing Agent", "success_rate": 94, "avg_setup_time": "1.8 hours" },
+      { "agent": "Support Agent", "success_rate": 98, "avg_setup_time": "1.2 hours" },
+      { "agent": "Operations Agent", "success_rate": 92, "avg_setup_time": "2.8 hours" }
+    ]
+  },
+  "smb_agent_usage": {
+    "smb_id": "smb_004",
+    "smb_name": "Global Dynamics",
+    "licensed_agents": 6,
+    "active_users": 22,
+    "total_monthly_calls": 198,
+    "avg_calls_per_user": 9,
+    "user_satisfaction": 4.8,
+    "productivity_gain": 32,
+    "time_saved_hours": 156,
+    "cost_savings": 12600,
+    "agent_usage_by_department": [
+      {
+        "department": "Marketing",
+        "users": 8,
+        "agents_used": ["Marketing Agent", "Analytics Agent"],
+        "monthly_calls": 89,
+        "satisfaction": 4.9,
+        "time_saved": 72,
+        "roi": 340
+      },
+      {
+        "department": "Finance", 
+        "users": 6,
+        "agents_used": ["Finance Agent", "Analytics Agent"],
+        "monthly_calls": 78,
+        "satisfaction": 4.8,
+        "time_saved": 58,
+        "roi": 280
+      },
+      {
+        "department": "Operations",
+        "users": 5,
+        "agents_used": ["Operations Agent", "Support Agent"], 
+        "monthly_calls": 31,
+        "satisfaction": 4.6,
+        "time_saved": 26,
+        "roi": 180
+      }
+    ],
+    "power_users": [
+      {
+        "user": "Sarah Chen (Marketing Manager)",
+        "monthly_calls": 24,
+        "favorite_agent": "Marketing Agent",
+        "satisfaction": 5.0,
+        "time_saved": 18,
+        "outputs_created": 47
+      },
+      {
+        "user": "Mike Rodriguez (Finance Director)",
+        "monthly_calls": 19,
+        "favorite_agent": "Finance Agent", 
+        "satisfaction": 4.9,
+        "time_saved": 15,
+        "outputs_created": 32
+      }
+    ]
+  }
+}

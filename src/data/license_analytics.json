@@ -1,0 +1,191 @@
+{
+  "msp_license_overview": {
+    "total_licenses": 1000,
+    "allocated_licenses": 850,
+    "available_licenses": 150,
+    "utilization_rate": 85,
+    "monthly_revenue": 89450,
+    "license_efficiency": 92,
+    "growth_projections": {
+      "q1_2024": { "demand": 1150, "revenue": 103000 },
+      "q2_2024": { "demand": 1300, "revenue": 118500 },
+      "q3_2024": { "demand": 1450, "revenue": 134200 }
+    },
+    "license_distribution": [
+      {
+        "si_id": "si_001",
+        "si_name": "TechFlow Solutions",
+        "allocated": 15,
+        "used": 12,
+        "utilization": 80,
+        "revenue": 843.75,
+        "trend": "stable"
+      },
+      {
+        "si_id": "si_002",
+        "si_name": "CloudPro Services", 
+        "allocated": 20,
+        "used": 18,
+        "utilization": 90,
+        "revenue": 1170,
+        "trend": "growing"
+      },
+      {
+        "si_id": "si_003",
+        "si_name": "DataSync Partners",
+        "allocated": 12,
+        "used": 10,
+        "utilization": 83,
+        "revenue": 648,
+        "trend": "stable"
+      },
+      {
+        "si_id": "si_004",
+        "si_name": "NetSecure Ltd",
+        "allocated": 25,
+        "used": 22,
+        "utilization": 88,
+        "revenue": 1435,
+        "trend": "growing"
+      }
+    ],
+    "optimization_opportunities": [
+      {
+        "type": "High Utilization Alert",
+        "si_name": "CloudPro Services",
+        "current_usage": "90%",
+        "recommendation": "Allocate 5 additional licenses",
+        "potential_revenue": "+$325/month",
+        "priority": "high"
+      },
+      {
+        "type": "Expansion Opportunity",
+        "si_name": "NetSecure Ltd", 
+        "current_growth": "31.4%",
+        "recommendation": "Increase allocation by 40%",
+        "potential_revenue": "+$570/month",
+        "priority": "medium"
+      }
+    ]
+  },
+  "si_license_management": {
+    "si_id": "si_002",
+    "si_name": "CloudPro Services",
+    "allocated_from_msp": 20,
+    "currently_used": 18,
+    "available_to_allocate": 2,
+    "utilization_rate": 90,
+    "monthly_cost": 1000,
+    "monthly_revenue": 1300,
+    "profit_margin": 23.1,
+    "license_pricing_tiers": [
+      { "tier": "Starter", "licenses": "1-5", "price": 65, "markup": 30 },
+      { "tier": "Professional", "licenses": "6-15", "price": 60, "markup": 25 },
+      { "tier": "Enterprise", "licenses": "16+", "price": 55, "markup": 20 }
+    ],
+    "smb_allocations": [
+      {
+        "smb_id": "smb_004",
+        "smb_name": "Global Dynamics",
+        "allocated": 8,
+        "used": 6,
+        "utilization": 75,
+        "monthly_payment": 520,
+        "contract_end": "2024-06-20",
+        "renewal_probability": 95
+      },
+      {
+        "smb_id": "smb_005",
+        "smb_name": "Omega Corp",
+        "allocated": 6,
+        "used": 5,
+        "utilization": 83,
+        "monthly_payment": 390,
+        "contract_end": "2024-07-15", 
+        "renewal_probability": 90
+      },
+      {
+        "smb_id": "smb_006",
+        "smb_name": "Sigma Systems",
+        "allocated": 4,
+        "used": 3,
+        "utilization": 75,
+        "monthly_payment": 260,
+        "contract_end": "2024-08-10",
+        "renewal_probability": 85
+      }
+    ],
+    "usage_forecasting": [
+      { "month": "Jan", "projected_usage": 19, "confidence": 92 },
+      { "month": "Feb", "projected_usage": 20, "confidence": 89 },
+      { "month": "Mar", "projected_usage": 22, "confidence": 85 },
+      { "month": "Apr", "projected_usage": 23, "confidence": 82 }
+    ]
+  },
+  "smb_license_usage": {
+    "smb_id": "smb_004",
+    "smb_name": "Global Dynamics",
+    "total_licenses": 8,
+    "actively_used": 6,
+    "utilization_rate": 75,
+    "monthly_cost": 520,
+    "cost_per_user": 21.67,
+    "roi_per_license": 420,
+    "license_efficiency": 87,
+    "department_allocation": [
+      {
+        "department": "Marketing",
+        "allocated": 3,
+        "used": 3,
+        "utilization": 100,
+        "primary_agents": ["Marketing Agent", "Analytics Agent"],
+        "monthly_value": 1800
+      },
+      {
+        "department": "Finance",
+        "allocated": 2,
+        "used": 2, 
+        "utilization": 100,
+        "primary_agents": ["Finance Agent"],
+        "monthly_value": 1400
+      },
+      {
+        "department": "Operations",
+        "allocated": 2,
+        "used": 1,
+        "utilization": 50,
+        "primary_agents": ["Operations Agent"],
+        "monthly_value": 600
+      },
+      {
+        "department": "Admin",
+        "allocated": 1,
+        "used": 0,
+        "utilization": 0,
+        "primary_agents": ["Support Agent"],
+        "monthly_value": 0
+      }
+    ],
+    "usage_optimization": [
+      {
+        "opportunity": "Underutilized Operations License",
+        "current_usage": "50%",
+        "recommendation": "Train 2 more operations users",
+        "potential_value": "+$800/month"
+      },
+      {
+        "opportunity": "Unused Admin License", 
+        "current_usage": "0%",
+        "recommendation": "Deploy Support Agent for customer service",
+        "potential_value": "+$1200/month"
+      }
+    ],
+    "renewal_analysis": {
+      "contract_end": "2024-06-20",
+      "renewal_probability": 95,
+      "expansion_opportunity": "Add 2 licenses for Operations team",
+      "projected_annual_value": 7440,
+      "satisfaction_score": 4.8
+    }
+  }
+}

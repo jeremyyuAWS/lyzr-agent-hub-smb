@@ -1,0 +1,8 @@
+[
+  { "month": "Jul", "calls": 8900, "users": 156, "revenue": 42500 },
+  { "month": "Aug", "calls": 10200, "users": 178, "revenue": 48900 },
+  { "month": "Sep", "calls": 11800, "users": 203, "revenue": 56200 },
+  { "month": "Oct", "calls": 13100, "users": 229, "revenue": 63800 },
+  { "month": "Nov", "calls": 14500, "users": 251, "revenue": 71400 },
+  { "month": "Dec", "calls": 15672, "users": 284, "revenue": 89450 }
+]

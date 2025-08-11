@@ -1,0 +1,41 @@
+{
+  "dashboard": [
+    {
+      "step": 1,
+      "title": "Metrics Overview",
+      "description": "View real-time metrics showing SIs, SMBs, and agent usage across your network.",
+      "target": ".metrics-cards",
+      "duration": 3000
+    },
+    {
+      "step": 2,
+      "title": "Usage Analytics",
+      "description": "Monitor agent call trends and revenue growth over time with interactive charts.",
+      "target": ".usage-chart",
+      "duration": 3000
+    },
+    {
+      "step": 3,
+      "title": "AI Assistant",
+      "description": "Ask questions about your data using our AI-powered chat assistant.",
+      "target": ".chat-panel",
+      "duration": 3000
+    }
+  ],
+  "agents": [
+    {
+      "step": 1,
+      "title": "Agent Gallery",
+      "description": "Explore our collection of 9 specialized AI agents for different business functions.",
+      "target": ".agent-grid",
+      "duration": 3000
+    },
+    {
+      "step": 2,
+      "title": "Agent Details", 
+      "description": "View detailed information about each agent's capabilities and usage metrics.",
+      "target": ".agent-card",
+      "duration": 3000
+    }
+  ]
+}

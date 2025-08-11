@@ -1,0 +1,280 @@
+{
+  "platform_configuration": {
+    "version": "2.4.1",
+    "environment": "production",
+    "uptime": "99.94%",
+    "last_update": "2024-01-10T00:00:00Z",
+    "maintenance_window": "Sundays 02:00-04:00 UTC",
+    "region": "us-east-1",
+    "data_retention": "7 years",
+    "backup_frequency": "every 6 hours",
+    "encryption": "AES-256",
+    "compliance": ["SOC 2", "GDPR", "HIPAA-ready"]
+  },
+  "api_management": {
+    "total_api_keys": 342,
+    "active_keys": 298,
+    "calls_this_month": 2450000,
+    "rate_limits": {
+      "free_tier": "1000/hour",
+      "professional": "10000/hour", 
+      "enterprise": "100000/hour"
+    },
+    "api_versions": [
+      { "version": "v1", "usage": 15, "deprecated": true, "sunset_date": "2024-06-01" },
+      { "version": "v2", "usage": 65, "current": true },
+      { "version": "v3", "usage": 20, "beta": true }
+    ],
+    "top_endpoints": [
+      { "endpoint": "/agents/execute", "calls": 892000, "avg_response": 2.3 },
+      { "endpoint": "/users/authenticate", "calls": 345000, "avg_response": 0.8 },
+      { "endpoint": "/tenants/metrics", "calls": 234000, "avg_response": 1.2 },
+      { "endpoint": "/licenses/usage", "calls": 156000, "avg_response": 0.9 }
+    ],
+    "generated_keys": [
+      {
+        "key_id": "ak_prod_001",
+        "name": "CloudPro Services - Production",
+        "tenant": "si_002",
+        "created": "2024-01-01T00:00:00Z",
+        "last_used": "2024-01-15T10:30:00Z",
+        "permissions": ["agents:execute", "users:read", "metrics:read"],
+        "rate_limit": "10000/hour",
+        "calls_this_month": 45600,
+        "status": "active"
+      },
+      {
+        "key_id": "ak_prod_002", 
+        "name": "NetSecure Ltd - Integration",
+        "tenant": "si_004",
+        "created": "2023-12-15T00:00:00Z",
+        "last_used": "2024-01-15T09:15:00Z",
+        "permissions": ["agents:execute", "tenants:read", "billing:read"],
+        "rate_limit": "25000/hour",
+        "calls_this_month": 78900,
+        "status": "active"
+      },
+      {
+        "key_id": "ak_dev_003",
+        "name": "Global Dynamics - Development",
+        "tenant": "smb_004",
+        "created": "2024-01-10T00:00:00Z", 
+        "last_used": "2024-01-14T16:45:00Z",
+        "permissions": ["agents:execute"],
+        "rate_limit": "1000/hour",
+        "calls_this_month": 1250,
+        "status": "active"
+      }
+    ]
+  },
+  "white_label_branding": [
+    {
+      "tenant_id": "si_002",
+      "tenant_name": "CloudPro Services",
+      "custom_domain": "ai.cloudpro.com",
+      "ssl_status": "active",
+      "branding": {
+        "logo_url": "https://cloudpro.com/logo.png",
+        "primary_color": "#0066CC",
+        "secondary_color": "#004499", 
+        "accent_color": "#FF6B35",
+        "platform_name": "CloudPro AI Platform",
+        "welcome_message": "Welcome to your intelligent business automation platform.",
+        "footer_text": "Powered by CloudPro Services",
+        "custom_css": true
+      },
+      "email_templates": {
+        "welcome_email": "custom",
+        "password_reset": "custom", 
+        "invoice": "custom"
+      },
+      "configuration_complete": true,
+      "last_updated": "2024-01-05T00:00:00Z"
+    },
+    {
+      "tenant_id": "si_004", 
+      "tenant_name": "NetSecure Ltd",
+      "custom_domain": "platform.netsecure.com",
+      "ssl_status": "pending",
+      "branding": {
+        "logo_url": "https://netsecure.com/logo.svg",
+        "primary_color": "#2D5AA0",
+        "secondary_color": "#1A365D",
+        "accent_color": "#38A169",
+        "platform_name": "NetSecure AI Suite",
+        "welcome_message": "Secure AI-powered automation for your enterprise.",
+        "footer_text": "© NetSecure Ltd - Secure by Design",
+        "custom_css": true
+      },
+      "email_templates": {
+        "welcome_email": "default",
+        "password_reset": "custom",
+        "invoice": "custom"
+      },
+      "configuration_complete": false,
+      "last_updated": "2024-01-12T00:00:00Z"
+    },
+    {
+      "tenant_id": "si_001",
+      "tenant_name": "TechFlow Solutions", 
+      "custom_domain": "portal.techflow.ai",
+      "ssl_status": "active",
+      "branding": {
+        "logo_url": "https://techflow.ai/brand/logo.png",
+        "primary_color": "#7C3AED",
+        "secondary_color": "#5B21B6",
+        "accent_color": "#F59E0B",
+        "platform_name": "TechFlow AI Hub",
+        "welcome_message": "Transform your business with intelligent automation.",
+        "footer_text": "TechFlow Solutions - Innovation Delivered",
+        "custom_css": false
+      },
+      "email_templates": {
+        "welcome_email": "default",
+        "password_reset": "default",
+        "invoice": "default"
+      },
+      "configuration_complete": true,
+      "last_updated": "2024-01-08T00:00:00Z"
+    }
+  ],
+  "security_policies": {
+    "password_requirements": {
+      "min_length": 12,
+      "require_uppercase": true,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_symbols": true,
+      "password_history": 12,
+      "max_age_days": 90,
+      "complexity_score": 8
+    },
+    "session_management": {
+      "session_timeout": 480,
+      "max_concurrent_sessions": 3,
+      "idle_timeout": 60,
+      "remember_me_duration": 30,
+      "secure_cookies": true,
+      "session_encryption": true
+    },
+    "access_controls": {
+      "failed_login_threshold": 5,
+      "account_lockout_duration": 30,
+      "ip_allowlist_enabled": false,
+      "geo_blocking_enabled": true,
+      "blocked_countries": ["CN", "RU", "KP"],
+      "vpn_detection": true,
+      "device_fingerprinting": true
+    },
+    "audit_logging": {
+      "log_all_actions": true,
+      "retention_period": "7 years",
+      "log_level": "detailed",
+      "real_time_alerts": true,
+      "export_format": ["JSON", "CSV", "SIEM"],
+      "compliance_ready": true
+    },
+    "data_protection": {
+      "encryption_at_rest": "AES-256",
+      "encryption_in_transit": "TLS 1.3",
+      "key_rotation": "quarterly",
+      "pii_detection": true,
+      "data_masking": true,
+      "right_to_erasure": true,
+      "data_portability": true
+    }
+  },
+  "system_notifications": {
+    "enabled_alerts": [
+      {
+        "type": "license_utilization",
+        "threshold": 85,
+        "recipients": ["ops@lyzr.ai"],
+        "severity": "warning",
+        "frequency": "immediate"
+      },
+      {
+        "type": "payment_failure",
+        "threshold": 1,
+        "recipients": ["billing@lyzr.ai", "ops@lyzr.ai"],
+        "severity": "critical",
+        "frequency": "immediate"
+      },
+      {
+        "type": "security_incident",
+        "threshold": 1,
+        "recipients": ["security@lyzr.ai", "ops@lyzr.ai"],
+        "severity": "critical", 
+        "frequency": "immediate"
+      },
+      {
+        "type": "system_performance",
+        "threshold": 95,
+        "recipients": ["devops@lyzr.ai"],
+        "severity": "warning",
+        "frequency": "hourly"
+      }
+    ],
+    "notification_channels": [
+      { "channel": "email", "enabled": true, "verified": true },
+      { "channel": "slack", "enabled": true, "webhook": "configured" },
+      { "channel": "sms", "enabled": false, "provider": null },
+      { "channel": "webhook", "enabled": true, "endpoints": 3 }
+    ]
+  },
+  "integration_settings": {
+    "webhook_endpoints": [
+      {
+        "id": "webhook_001",
+        "name": "CloudPro Billing Sync", 
+        "url": "https://api.cloudpro.com/webhooks/lyzr",
+        "events": ["license.allocated", "user.created", "payment.processed"],
+        "status": "active",
+        "last_delivery": "2024-01-15T10:30:00Z",
+        "success_rate": 98.7
+      },
+      {
+        "id": "webhook_002",
+        "name": "NetSecure Analytics",
+        "url": "https://analytics.netsecure.com/webhook",
+        "events": ["agent.executed", "usage.updated"],
+        "status": "active", 
+        "last_delivery": "2024-01-15T09:45:00Z",
+        "success_rate": 99.2
+      }
+    ],
+    "oauth_applications": [
+      {
+        "client_id": "oauth_cloudpro_001",
+        "name": "CloudPro Dashboard Integration",
+        "tenant": "si_002",
+        "scopes": ["read:users", "read:metrics", "write:agents"],
+        "redirect_uris": ["https://dashboard.cloudpro.com/callback"],
+        "status": "approved",
+        "created": "2024-01-01T00:00:00Z"
+      }
+    ]
+  },
+  "maintenance_schedules": [
+    {
+      "id": "maint_001",
+      "title": "Monthly Security Updates",
+      "type": "security",
+      "frequency": "monthly", 
+      "next_scheduled": "2024-02-04T02:00:00Z",
+      "duration": 120,
+      "affected_services": ["API", "Dashboard"],
+      "notification_advance": 168
+    },
+    {
+      "id": "maint_002",
+      "title": "Database Optimization",
+      "type": "performance",
+      "frequency": "quarterly",
+      "next_scheduled": "2024-03-03T02:00:00Z", 
+      "duration": 180,
+      "affected_services": ["Dashboard", "Reports"],
+      "notification_advance": 336
+    }
+  ]
+}

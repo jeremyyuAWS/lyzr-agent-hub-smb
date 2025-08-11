@@ -1,0 +1,73 @@
+{
+  "metrics": {
+    "totalSIs": 47,
+    "totalSMBs": 284,
+    "totalRevenue": 89450,
+    "totalLicenses": 1000,
+    "usedLicenses": 850,
+    "availableLicenses": 150,
+    "growthRate": 23.5,
+    "avgRevenuePerSI": 1903,
+    "topPerformingAgent": "Finance Agent"
+  },
+  "siPerformance": [
+    {
+      "id": "si_001",
+      "name": "TechFlow Solutions", 
+      "smbs": 28,
+      "revenue": 12680,
+      "licenses": 15,
+      "utilizationRate": 80,
+      "growthRate": 18.5,
+      "status": "active"
+    },
+    {
+      "id": "si_002",
+      "name": "CloudPro Services",
+      "smbs": 35, 
+      "revenue": 18750,
+      "licenses": 20,
+      "utilizationRate": 90,
+      "growthRate": 25.2,
+      "status": "active"
+    },
+    {
+      "id": "si_003",
+      "name": "DataSync Partners",
+      "smbs": 19,
+      "revenue": 9440,
+      "licenses": 12,
+      "utilizationRate": 83,
+      "growthRate": 12.8,
+      "status": "active"
+    },
+    {
+      "id": "si_004", 
+      "name": "NetSecure Ltd",
+      "smbs": 42,
+      "revenue": 21890,
+      "licenses": 25,
+      "utilizationRate": 88,
+      "growthRate": 31.4,
+      "status": "active"
+    },
+    {
+      "id": "si_005",
+      "name": "InnoTech Hub", 
+      "smbs": 31,
+      "revenue": 15670,
+      "licenses": 18,
+      "utilizationRate": 72,
+      "growthRate": 19.7,
+      "status": "active"
+    }
+  ],
+  "revenueDistribution": [
+    { "month": "Jul", "revenue": 72500, "costs": 35600, "profit": 36900 },
+    { "month": "Aug", "revenue": 78900, "costs": 38200, "profit": 40700 },
+    { "month": "Sep", "revenue": 82200, "costs": 41100, "profit": 41100 },
+    { "month": "Oct", "revenue": 85800, "costs": 42900, "profit": 42900 },
+    { "month": "Nov", "revenue": 87400, "costs": 43700, "profit": 43700 },
+    { "month": "Dec", "revenue": 89450, "costs": 44725, "profit": 44725 }
+  ]
+}

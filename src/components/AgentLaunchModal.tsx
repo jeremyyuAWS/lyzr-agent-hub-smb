@@ -1,0 +1,461 @@
+import React, { useState } from 'react';
+import { X, Upload, Play, Download, Share, Copy, CheckCircle, Loader2 } from 'lucide-react';
+
+interface AgentLaunchModalProps {
+  agent: {
+    id: string;
+    name: string;
+    role: string;
+    goal: string;
+    inputs: string;
+    outputs: string;
+    demoUrl?: string;
+  };
+  isOpen: boolean;
+  onClose: () => void;
+  perspective: string;
+}
+
+const AgentLaunchModal: React.FC<AgentLaunchModalProps> = ({ agent, isOpen, onClose, perspective }) => {
+  const [step, setStep] = useState<'input' | 'executing' | 'results'>('input');
+  const [inputData, setInputData] = useState<Record<string, any>>({});
+  const [executionProgress, setExecutionProgress] = useState(0);
+  const [results, setResults] = useState<string>('');
+  const [executionId] = useState(() => `exec_${Date.now()}`);
+
+  const getAgentInputFields = () => {
+    switch (agent.id) {
+      case 'finance_agent':
+        return [
+          { id: 'period', label: 'Report Period', type: 'select', options: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024'], required: true },
+          { id: 'metrics', label: 'Key Metrics', type: 'multiselect', options: ['Revenue', 'Expenses', 'Cash Flow', 'Profit Margin'], required: true },
+          { id: 'file', label: 'Financial Data', type: 'file', accept: '.csv,.xlsx', required: false },
+          { id: 'format', label: 'Output Format', type: 'select', options: ['Executive Summary', 'Detailed Report', 'Dashboard'], required: true }
+        ];
+      case 'marketing_agent':
+        return [
+          { id: 'campaign', label: 'Campaign Type', type: 'select', options: ['Email Campaign', 'Social Media', 'Blog Content', 'Product Launch'], required: true },
+          { id: 'audience', label: 'Target Audience', type: 'text', placeholder: 'e.g., Tech professionals, SMB owners', required: true },
+          { id: 'tone', label: 'Brand Tone', type: 'select', options: ['Professional', 'Casual', 'Technical', 'Friendly'], required: true },
+          { id: 'goals', label: 'Campaign Goals', type: 'multiselect', options: ['Lead Generation', 'Brand Awareness', 'Product Education', 'Customer Retention'], required: true }
+        ];
+      case 'legal_agent':
+        return [
+          { id: 'document', label: 'Document Type', type: 'select', options: ['NDA', 'Service Agreement', 'Privacy Policy', 'Terms of Service'], required: true },
+          { id: 'parties', label: 'Parties Involved', type: 'text', placeholder: 'Company A, Company B', required: true },
+          { id: 'jurisdiction', label: 'Jurisdiction', type: 'select', options: ['Delaware', 'California', 'New York', 'International'], required: true },
+          { id: 'template', label: 'Use Template', type: 'file', accept: '.pdf,.docx', required: false }
+        ];
+      default:
+        return [
+          { id: 'input_text', label: 'Input Description', type: 'textarea', placeholder: 'Describe what you need...', required: true },
+          { id: 'format', label: 'Output Format', type: 'select', options: ['Report', 'Summary', 'Analysis', 'Recommendations'], required: true }
+        ];
+    }
+  };
+
+  const simulateExecution = async () => {
+    setStep('executing');
+    setExecutionProgress(0);
+    
+    const steps = [
+      'Initializing agent...',
+      'Processing input data...',
+      'Analyzing requirements...',
+      'Generating content...',
+      'Applying business rules...',
+      'Formatting output...',
+      'Quality check...',
+      'Finalizing results...'
+    ];
+
+    for (let i = 0; i < steps.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 800));
+      setExecutionProgress((i + 1) / steps.length * 100);
+    }
+
+    // Generate mock results based on agent type
+    const mockResults = generateMockResults();
+    setResults(mockResults);
+    setStep('results');
+    
+    // Save to execution history
+    const execution = {
+      id: executionId,
+      agentId: agent.id,
+      agentName: agent.name,
+      timestamp: new Date().toISOString(),
+      inputs: inputData,
+      results: mockResults,
+      status: 'completed'
+    };
+    
+    const history = JSON.parse(localStorage.getItem('agentHistory') || '[]');
+    history.unshift(execution);
+    localStorage.setItem('agentHistory', JSON.stringify(history.slice(0, 50))); // Keep last 50
+  };
+
+  const generateMockResults = () => {
+    switch (agent.id) {
+      case 'finance_agent':
+        return `# Financial Analysis Report - ${inputData.period}
+
+## Executive Summary
+Revenue increased by 23.5% compared to previous quarter, driven by strong performance in our core business segments.
+
+## Key Metrics
+- **Revenue**: $2.4M (+23.5%)
+- **Gross Profit**: $1.8M (+18.2%)
+- **Operating Expenses**: $1.2M (+8.7%)
+- **Net Profit**: $620K (+45.3%)
+- **Cash Flow**: $890K (+32.1%)
+
+## Recommendations
+1. Maintain current growth trajectory in high-performing segments
+2. Optimize operating expenses to improve profit margins
+3. Increase cash reserves for Q1 2024 expansion plans
+
+*Generated by Finance Agent • ${new Date().toLocaleString()}*`;
+
+      case 'marketing_agent':
+        return `# Marketing Campaign Strategy - ${inputData.campaign}
+
+## Campaign Overview
+**Target**: ${inputData.audience}
+**Tone**: ${inputData.tone}
+**Primary Goal**: ${inputData.goals?.[0] || 'Brand Awareness'}
+
+## Content Strategy
+### Email Subject Lines
+- "Transform Your Business with AI-Powered Insights"
+- "Join 500+ Companies Already Saving 40% on Operations"
+- "Your Competition is Using AI. Are You?"
+
+### Key Messages
+1. **Problem**: Manual processes are costing you time and money
+2. **Solution**: AI agents that work 24/7 to optimize your business
+3. **Proof**: Real results from companies like yours
+
+### Call-to-Action
+"Schedule a 15-minute demo and see immediate ROI potential"
+
+## Success Metrics
+- Target: 35% open rate, 8% click-through rate
+- Expected leads: 150-200 qualified prospects
+- Estimated ROI: 400% within 90 days
+
+*Generated by Marketing Agent • ${new Date().toLocaleString()}*`;
+
+      case 'legal_agent':
+        return `# ${inputData.document} - Draft Document
+
+## Document Summary
+**Type**: ${inputData.document}
+**Parties**: ${inputData.parties}
+**Jurisdiction**: ${inputData.jurisdiction}
+**Status**: Draft for Review
+
+## Key Terms
+### Confidentiality Obligations
+- Definition of confidential information
+- Non-disclosure requirements for both parties
+- Return of materials upon termination
+
+### Term & Termination
+- Effective date: Upon execution
+- Term: 3 years (renewable)
+- Termination rights and procedures
+
+### Legal Framework
+- Governing law: ${inputData.jurisdiction}
+- Dispute resolution: Binding arbitration
+- Severability and enforcement provisions
+
+## Next Steps
+1. Legal team review required
+2. Stakeholder approval needed
+3. Final execution by authorized representatives
+
+*Generated by Legal Agent • ${new Date().toLocaleString()}*`;
+
+      default:
+        return `# Agent Output
+
+## Analysis Results
+Your request has been processed and analyzed according to current business requirements and best practices.
+
+## Key Findings
+- Input data successfully processed
+- Analysis complete with actionable insights
+- Recommendations generated based on industry standards
+
+## Recommendations
+1. Review output for accuracy and completeness
+2. Implement suggested actions within 30 days  
+3. Monitor results and adjust as needed
+
+*Generated by ${agent.name} • ${new Date().toLocaleString()}*`;
+    }
+  };
+
+  const handleInputChange = (fieldId: string, value: any) => {
+    setInputData(prev => ({ ...prev, [fieldId]: value }));
+  };
+
+  const handleExport = (format: 'copy' | 'download' | 'share') => {
+    switch (format) {
+      case 'copy':
+        navigator.clipboard.writeText(results);
+        alert('Results copied to clipboard!');
+        break;
+      case 'download':
+        const blob = new Blob([results], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${agent.name}_${executionId}.md`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        break;
+      case 'share':
+        alert('Sharing functionality would integrate with Slack, Teams, or email');
+        break;
+    }
+  };
+
+  const renderInputField = (field: any) => {
+    switch (field.type) {
+      case 'text':
+        return (
+          <input
+            type="text"
+            placeholder={field.placeholder}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => handleInputChange(field.id, e.target.value)}
+            required={field.required}
+          />
+        );
+      case 'textarea':
+        return (
+          <textarea
+            placeholder={field.placeholder}
+            rows={4}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            onChange={(e) => handleInputChange(field.id, e.target.value)}
+            required={field.required}
+          />
+        );
+      case 'select':
+        return (
+          <select
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={(e) => handleInputChange(field.id, e.target.value)}
+            required={field.required}
+          >
+            <option value="">Select {field.label}</option>
+            {field.options.map((option: string) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        );
+      case 'multiselect':
+        return (
+          <div className="space-y-2">
+            {field.options.map((option: string) => (
+              <label key={option} className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  className="rounded border-gray-300"
+                  onChange={(e) => {
+                    const currentValues = inputData[field.id] || [];
+                    if (e.target.checked) {
+                      handleInputChange(field.id, [...currentValues, option]);
+                    } else {
+                      handleInputChange(field.id, currentValues.filter((v: string) => v !== option));
+                    }
+                  }}
+                />
+                <span className="text-sm text-gray-700">{option}</span>
+              </label>
+            ))}
+          </div>
+        );
+      case 'file':
+        return (
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+            <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+            <p className="text-sm text-gray-600 mb-2">Drop files here or click to upload</p>
+            <input
+              type="file"
+              accept={field.accept}
+              className="hidden"
+              id={`file-${field.id}`}
+              onChange={(e) => handleInputChange(field.id, e.target.files?.[0])}
+            />
+            <label
+              htmlFor={`file-${field.id}`}
+              className="bg-white border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer inline-block"
+            >
+              Choose File
+            </label>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div>
+            <h2 className="text-xl font-bold text-black">{agent.name}</h2>
+            <p className="text-sm text-gray-600">{agent.role} • {step === 'input' ? 'Configure' : step === 'executing' ? 'Executing' : 'Results'}</p>
+          </div>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-lg">
+            <X className="w-5 h-5 text-gray-600" />
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto">
+          {step === 'input' && (
+            <div className="p-6 space-y-6">
+              <div>
+                <h3 className="font-semibold text-black mb-2">Agent Configuration</h3>
+                <p className="text-sm text-gray-600 mb-4">{agent.goal}</p>
+              </div>
+
+              <form className="space-y-4">
+                {getAgentInputFields().map(field => (
+                  <div key={field.id}>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      {field.label} {field.required && <span className="text-red-500">*</span>}
+                    </label>
+                    {renderInputField(field)}
+                  </div>
+                ))}
+              </form>
+            </div>
+          )}
+
+          {step === 'executing' && (
+            <div className="p-6 flex flex-col items-center justify-center min-h-[300px] space-y-6">
+              <div className="text-center">
+                <Loader2 className="w-12 h-12 text-blue-600 animate-spin mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-black mb-2">Agent Executing</h3>
+                <p className="text-gray-600">{agent.name} is processing your request...</p>
+              </div>
+              
+              <div className="w-full max-w-md">
+                <div className="flex justify-between text-sm text-gray-600 mb-2">
+                  <span>Progress</span>
+                  <span>{Math.round(executionProgress)}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${executionProgress}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {step === 'results' && (
+            <div className="p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <h3 className="font-semibold text-black">Execution Complete</h3>
+                </div>
+                <div className="flex space-x-2">
+                  {agent.demoUrl && (
+                    <button
+                      onClick={() => window.open(agent.demoUrl, '_blank')}
+                      className="p-2 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colors"
+                      title="View Live Demo"
+                    >
+                      <span className="text-xs font-medium text-blue-700">Live Demo</span>
+                    </button>
+                  )}
+                  <button
+                    onClick={() => handleExport('copy')}
+                    className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    title="Copy to clipboard"
+                  >
+                    <Copy className="w-4 h-4 text-gray-600" />
+                  </button>
+                  <button
+                    onClick={() => handleExport('download')}
+                    className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    title="Download"
+                  >
+                    <Download className="w-4 h-4 text-gray-600" />
+                  </button>
+                  <button
+                    onClick={() => handleExport('share')}
+                    className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                    title="Share"
+                  >
+                    <Share className="w-4 h-4 text-gray-600" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-4 max-h-96 overflow-y-auto">
+                <pre className="whitespace-pre-wrap text-sm text-gray-800">{results}</pre>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="p-6 border-t border-gray-200 flex justify-between">
+          <div>
+            {step === 'results' && (
+              <button
+                onClick={() => setStep('input')}
+                className="bg-white border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                New Execution
+              </button>
+            )}
+          </div>
+          <div className="space-x-3">
+            {step === 'input' && (
+              <>
+                <button
+                  onClick={onClose}
+                  className="bg-white border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={simulateExecution}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                >
+                  <Play className="w-4 h-4" />
+                  <span>Execute Agent</span>
+                </button>
+              </>
+            )}
+            {step === 'results' && (
+              <button
+                onClick={onClose}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Done
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AgentLaunchModal;

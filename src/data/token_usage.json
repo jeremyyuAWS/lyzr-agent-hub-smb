@@ -1,0 +1,120 @@
+{
+  "msp_ecosystem": {
+    "total_tokens_consumed": 45780000,
+    "monthly_growth": 18.5,
+    "cost_per_token": 0.002,
+    "monthly_cost": 91560,
+    "peak_usage_hour": "10:00 AM",
+    "efficiency_score": 87,
+    "top_consuming_sis": [
+      {
+        "si_id": "si_002",
+        "si_name": "CloudPro Services",
+        "tokens_consumed": 8920000,
+        "monthly_cost": 17840,
+        "growth_rate": 25.2,
+        "efficiency": 91
+      },
+      {
+        "si_id": "si_004", 
+        "si_name": "NetSecure Ltd",
+        "tokens_consumed": 7650000,
+        "monthly_cost": 15300,
+        "growth_rate": 31.4,
+        "efficiency": 88
+      },
+      {
+        "si_id": "si_001",
+        "si_name": "TechFlow Solutions",
+        "tokens_consumed": 6340000,
+        "monthly_cost": 12680,
+        "growth_rate": 18.5,
+        "efficiency": 85
+      }
+    ]
+  },
+  "si_portfolio": {
+    "si_id": "si_002",
+    "si_name": "CloudPro Services",
+    "total_tokens_consumed": 8920000,
+    "allocated_token_budget": 10000000,
+    "utilization_rate": 89.2,
+    "monthly_cost": 17840,
+    "revenue_markup": 30,
+    "monthly_revenue": 23192,
+    "profit_margin": 30,
+    "top_consuming_smbs": [
+      {
+        "smb_id": "smb_004",
+        "smb_name": "Global Dynamics", 
+        "tokens_consumed": 2840000,
+        "monthly_cost": 5680,
+        "charged_amount": 7384,
+        "profit": 1704,
+        "efficiency": 94,
+        "top_agents": ["Marketing Agent", "Finance Agent"]
+      },
+      {
+        "smb_id": "smb_005",
+        "smb_name": "Omega Corp",
+        "tokens_consumed": 2350000,
+        "monthly_cost": 4700,
+        "charged_amount": 6110,
+        "profit": 1410,
+        "efficiency": 89,
+        "top_agents": ["Finance Agent", "Operations Agent"]
+      }
+    ],
+    "hourly_usage_pattern": [
+      { "hour": "08:00", "tokens": 280000, "peak_agents": ["Finance Agent"] },
+      { "hour": "10:00", "tokens": 450000, "peak_agents": ["Marketing Agent", "Finance Agent"] },
+      { "hour": "14:00", "tokens": 380000, "peak_agents": ["Legal Agent", "Operations Agent"] },
+      { "hour": "16:00", "tokens": 320000, "peak_agents": ["Marketing Agent"] }
+    ]
+  },
+  "smb_team": {
+    "smb_id": "smb_004",
+    "smb_name": "Global Dynamics",
+    "total_tokens_consumed": 2840000,
+    "monthly_budget": 3000000,
+    "utilization_rate": 94.7,
+    "cost_per_call": 14.35,
+    "monthly_cost": 7384,
+    "department_breakdown": [
+      {
+        "department": "Marketing",
+        "tokens_consumed": 1260000,
+        "percentage": 44.4,
+        "users": 8,
+        "avg_tokens_per_user": 157500,
+        "top_agent": "Marketing Agent",
+        "efficiency_score": 92
+      },
+      {
+        "department": "Finance",
+        "tokens_consumed": 980000,
+        "percentage": 34.5,
+        "users": 6,
+        "avg_tokens_per_user": 163333,
+        "top_agent": "Finance Agent", 
+        "efficiency_score": 89
+      },
+      {
+        "department": "Operations",
+        "tokens_consumed": 600000,
+        "percentage": 21.1,
+        "users": 5,
+        "avg_tokens_per_user": 120000,
+        "top_agent": "Operations Agent",
+        "efficiency_score": 76
+      }
+    ],
+    "daily_usage_trends": [
+      { "day": "Mon", "tokens": 450000, "calls": 28, "peak_time": "10:00 AM" },
+      { "day": "Tue", "tokens": 520000, "calls": 32, "peak_time": "2:00 PM" },
+      { "day": "Wed", "tokens": 480000, "calls": 31, "peak_time": "11:00 AM" },
+      { "day": "Thu", "tokens": 510000, "calls": 33, "peak_time": "3:00 PM" },
+      { "day": "Fri", "tokens": 380000, "calls": 26, "peak_time": "9:00 AM" }
+    ]
+  }
+}

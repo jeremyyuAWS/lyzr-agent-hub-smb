@@ -1,0 +1,67 @@
+{
+  "licenseFlow": {
+    "mspPool": {
+      "total": 1000,
+      "allocated": 850,
+      "available": 150,
+      "pricing": {
+        "perLicense": 50,
+        "volume": {
+          "tier1": { "min": 1, "max": 100, "price": 50 },
+          "tier2": { "min": 101, "max": 500, "price": 45 },
+          "tier3": { "min": 501, "max": 1000, "price": 40 }
+        }
+      }
+    },
+    "siAllocations": [
+      {
+        "siId": "si_001",
+        "siName": "TechFlow Solutions",
+        "allocated": 15,
+        "used": 12,
+        "available": 3,
+        "cost": 675,
+        "markup": 25,
+        "revenue": 843.75
+      },
+      {
+        "siId": "si_002", 
+        "siName": "CloudPro Services",
+        "allocated": 20,
+        "used": 18,
+        "available": 2,
+        "cost": 900,
+        "markup": 30,
+        "revenue": 1170
+      },
+      {
+        "siId": "si_003",
+        "siName": "DataSync Partners", 
+        "allocated": 12,
+        "used": 10,
+        "available": 2,
+        "cost": 540,
+        "markup": 20,
+        "revenue": 648
+      }
+    ],
+    "smbUsage": [
+      {
+        "smbId": "smb_001",
+        "smbName": "Acme Corp",
+        "licenses": 5,
+        "monthlyUsage": 145,
+        "costPerCall": 2.5,
+        "monthlyCost": 362.5
+      },
+      {
+        "smbId": "smb_004", 
+        "smbName": "Global Dynamics",
+        "licenses": 8,
+        "monthlyUsage": 198,
+        "costPerCall": 2.5,
+        "monthlyCost": 495
+      }
+    ]
+  }
+}

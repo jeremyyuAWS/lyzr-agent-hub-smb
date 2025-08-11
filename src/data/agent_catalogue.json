@@ -1,0 +1,93 @@
+[
+  {
+    "id": "ai_sdr",
+    "name": "AI SDR",
+    "role": "Sales Development Representative",
+    "goal": "Automate lead qualification, outreach, and sales pipeline management",
+    "inputs": "Lead data, contact information, sales criteria, outreach templates",
+    "outputs": "Qualified leads, personalized outreach messages, pipeline reports",
+    "usageCount": 3420,
+    "adoptionRate": 89,
+    "avgResponseTime": "2.3s",
+    "category": "Sales",
+    "demoUrl": "https://jazon.studio.lyzr.ai/"
+  },
+  {
+    "id": "investment_memo_writer",
+    "name": "Investment Memo Writer",
+    "role": "Investment Analysis",
+    "goal": "Generate comprehensive investment memos and financial analysis reports",
+    "inputs": "Company data, financial statements, market analysis, investment criteria",
+    "outputs": "Investment memos, due diligence reports, risk assessments",
+    "usageCount": 2180,
+    "adoptionRate": 67,
+    "avgResponseTime": "3.1s",
+    "category": "Finance",
+    "demoUrl": "https://master.d35xeqxyj1k3j9.amplifyapp.com/"
+  },
+  {
+    "id": "content_creator",
+    "name": "Content Creator",
+    "role": "Content Generation",
+    "goal": "Create engaging content across multiple formats and platforms",
+    "inputs": "Brand guidelines, target audience, content themes, platform specifications",
+    "outputs": "Blog posts, social media content, marketing copy, video scripts",
+    "usageCount": 2890,
+    "adoptionRate": 78,
+    "avgResponseTime": "1.9s",
+    "category": "Marketing",
+    "demoUrl": "https://hitachi.ca.lyzr.app/"
+  },
+  {
+    "id": "ebook_writer",
+    "name": "E-book Writer",
+    "role": "Long-form Content Creation",
+    "goal": "Generate comprehensive e-books and detailed documentation",
+    "inputs": "Topic outline, research materials, target audience, style guidelines",
+    "outputs": "Complete e-books, chapter summaries, formatted documents",
+    "usageCount": 2145,
+    "adoptionRate": 71,
+    "avgResponseTime": "2.7s",
+    "category": "Content",
+    "demoUrl": "https://hitachi-ebook.studio.lyzr.ai/"
+  },
+  {
+    "id": "enterprise_search",
+    "name": "Enterprise Search",
+    "role": "Information Retrieval",
+    "goal": "Intelligent search and knowledge discovery across enterprise systems",
+    "inputs": "Search queries, document repositories, knowledge bases, access permissions",
+    "outputs": "Relevant documents, summarized insights, knowledge recommendations",
+    "usageCount": 1560,
+    "adoptionRate": 58,
+    "avgResponseTime": "2.8s",
+    "category": "Analytics",
+    "demoUrl": "https://www.hfsresearch.com/"
+  },
+  {
+    "id": "customer_support",
+    "name": "Customer Support",
+    "role": "Customer Service Automation",
+    "goal": "Provide intelligent customer support and issue resolution",
+    "inputs": "Customer queries, support tickets, knowledge base, product information",
+    "outputs": "Support responses, ticket routing, solution recommendations",
+    "usageCount": 3890,
+    "adoptionRate": 94,
+    "avgResponseTime": "1.2s",
+    "category": "Support",
+    "demoUrl": "https://nvidia-enterprise-ai-support.netlify.app/"
+  },
+  {
+    "id": "resource_allocation",
+    "name": "Resource Allocation",
+    "role": "Resource Management",
+    "goal": "Optimize resource allocation and capacity planning across projects",
+    "inputs": "Resource data, project requirements, capacity constraints, priorities",
+    "outputs": "Allocation plans, capacity reports, optimization recommendations",
+    "usageCount": 1890,
+    "adoptionRate": 65,
+    "avgResponseTime": "3.5s",
+    "category": "Operations",
+    "demoUrl": "http://3.64.85.15:3000/"
+  }
+]

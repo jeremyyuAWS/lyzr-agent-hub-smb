@@ -1,0 +1,191 @@
+[
+  {
+    "id": "ai_sdr",
+    "name": "AI SDR",
+    "category": "sales",
+    "description": "Automate lead qualification, outreach, and sales pipeline management",
+    "tags": ["lead generation", "outreach", "sales automation"],
+    "liveLink": "https://jazon.studio.lyzr.ai/",
+    "status": "live"
+  },
+  {
+    "id": "abm_strategy",
+    "name": "ABM Strategy Builder",
+    "category": "sales",
+    "description": "Create targeted account-based marketing strategies",
+    "tags": ["ABM", "strategy", "targeting"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "icp_generator",
+    "name": "ICP Generator",
+    "category": "sales",
+    "description": "Generate ideal customer profiles for better targeting",
+    "tags": ["ICP", "targeting", "customer profiling"],
+    "liveLink": null,
+    "status": "optional"
+  },
+  {
+    "id": "inbound_lead_processing",
+    "name": "Inbound Lead Processing",
+    "category": "sales",
+    "description": "Automatically process and qualify inbound leads",
+    "tags": ["lead processing", "qualification", "automation"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "blog_writer",
+    "name": "Blog Post Writer",
+    "category": "marketing",
+    "description": "Generate SEO-optimized blog posts and articles",
+    "tags": ["content", "SEO", "blogging"],
+    "liveLink": "https://hitachi.ca.lyzr.app/",
+    "status": "live"
+  },
+  {
+    "id": "ebook_generator",
+    "name": "E-book Generator",
+    "category": "marketing",
+    "description": "Create comprehensive e-books and whitepapers",
+    "tags": ["ebook", "content", "lead magnets"],
+    "liveLink": "https://hitachi-ebook.studio.lyzr.ai/",
+    "status": "live"
+  },
+  {
+    "id": "social_media_generator",
+    "name": "Social Media Post Generator",
+    "category": "marketing",
+    "description": "Create engaging social media content across platforms",
+    "tags": ["social media", "content", "engagement"],
+    "liveLink": null,
+    "status": "live"
+  },
+  {
+    "id": "web_copy_writer",
+    "name": "Web Copy Writer",
+    "category": "marketing",
+    "description": "Write compelling website copy and landing pages",
+    "tags": ["copywriting", "web content", "conversion"],
+    "liveLink": null,
+    "status": "live"
+  },
+  {
+    "id": "veo3_prompt_writer",
+    "name": "Veo3 Prompt Writer",
+    "category": "marketing",
+    "description": "Generate optimized prompts for video content creation",
+    "tags": ["video", "prompts", "content creation"],
+    "liveLink": null,
+    "status": "live"
+  },
+  {
+    "id": "ai_image_generator",
+    "name": "AI Image Generator",
+    "category": "marketing",
+    "description": "Create custom images and graphics for marketing",
+    "tags": ["images", "graphics", "visual content"],
+    "liveLink": null,
+    "status": "live"
+  },
+  {
+    "id": "newsletter_agent",
+    "name": "Newsletter Agent",
+    "category": "marketing",
+    "description": "Automate newsletter creation and distribution",
+    "tags": ["newsletter", "email marketing", "automation"],
+    "liveLink": null,
+    "status": "live"
+  },
+  {
+    "id": "website_chat_agent",
+    "name": "Website Chat Agent",
+    "category": "customer-service",
+    "description": "Provide 24/7 customer support through website chat",
+    "tags": ["chat", "support", "automation"],
+    "liveLink": null,
+    "status": "live"
+  },
+  {
+    "id": "customer_support_agent",
+    "name": "Customer Support Agent",
+    "category": "customer-service",
+    "description": "Handle customer inquiries and support tickets",
+    "tags": ["support", "tickets", "customer service"],
+    "liveLink": "https://nvidia-enterprise-ai-support.netlify.app/",
+    "status": "live"
+  },
+  {
+    "id": "customer_testimonials",
+    "name": "Customer Testimonials",
+    "category": "customer-service",
+    "description": "Collect and manage customer testimonials and reviews",
+    "tags": ["testimonials", "reviews", "feedback"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "employee_onboarding",
+    "name": "Employee Onboarding Agent",
+    "category": "hr",
+    "description": "Streamline new employee onboarding process",
+    "tags": ["onboarding", "HR", "automation"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "hr_helpdesk",
+    "name": "HR Helpdesk Agent",
+    "category": "hr",
+    "description": "Answer employee HR questions and provide support",
+    "tags": ["HR", "helpdesk", "employee support"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "exit_interview",
+    "name": "Exit Interview Agent",
+    "category": "hr",
+    "description": "Conduct structured exit interviews with departing employees",
+    "tags": ["exit interview", "feedback", "HR"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "performance_review",
+    "name": "Performance Review Agent",
+    "category": "hr",
+    "description": "Automate performance review processes and feedback",
+    "tags": ["performance", "reviews", "feedback"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "esac_survey",
+    "name": "ESAC Survey Agent",
+    "category": "hr",
+    "description": "Conduct employee satisfaction and culture surveys",
+    "tags": ["surveys", "satisfaction", "culture"],
+    "liveLink": null,
+    "status": "coming_soon"
+  },
+  {
+    "id": "finance_analyst",
+    "name": "Finance Analyst Agent",
+    "category": "finance",
+    "description": "Analyze financial data and generate insights",
+    "tags": ["analysis", "finance", "reporting"],
+    "liveLink": "https://master.d35xeqxyj1k3j9.amplifyapp.com/",
+    "status": "live"
+  },
+  {
+    "id": "accounts_receivable",
+    "name": "Accounts Receivable Agent",
+    "category": "finance",
+    "description": "Manage accounts receivable and payment tracking",
+    "tags": ["AR", "payments", "finance"],
+    "liveLink": null,
+    "status": "coming_soon"
+  }
+]

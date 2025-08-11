@@ -1,0 +1,170 @@
+{
+  "msp_license_pool": {
+    "total_licenses": 1000,
+    "allocated_licenses": 850,
+    "available_licenses": 150,
+    "utilization_rate": 85,
+    "monthly_revenue": 89450,
+    "monthly_cost": 42500,
+    "profit_margin": 52.4,
+    "growth_rate": 23.5,
+    "projected_demand": {
+      "next_month": 920,
+      "q2_2024": 1150,
+      "q3_2024": 1300,
+      "q4_2024": 1450
+    },
+    "pricing_tiers": [
+      { "tier": "Starter", "min": 1, "max": 25, "price": 50, "discount": 0 },
+      { "tier": "Professional", "min": 26, "max": 100, "price": 45, "discount": 10 },
+      { "tier": "Enterprise", "min": 101, "max": 500, "price": 40, "discount": 20 },
+      { "tier": "Enterprise+", "min": 501, "max": 1000, "price": 35, "discount": 30 }
+    ]
+  },
+  "si_allocations": [
+    {
+      "si_id": "si_001",
+      "si_name": "TechFlow Solutions",
+      "allocated": 25,
+      "used": 20,
+      "available": 5,
+      "utilization": 80,
+      "monthly_cost": 1125,
+      "monthly_revenue": 1406.25,
+      "profit": 281.25,
+      "markup": 25,
+      "contract_end": "2024-09-15",
+      "auto_renewal": true,
+      "payment_status": "current",
+      "last_payment": "2024-01-01",
+      "usage_trend": "stable",
+      "expansion_score": 75,
+      "risk_score": 15
+    },
+    {
+      "si_id": "si_002", 
+      "si_name": "CloudPro Services",
+      "allocated": 35,
+      "used": 32,
+      "available": 3,
+      "utilization": 91,
+      "monthly_cost": 1400,
+      "monthly_revenue": 1820,
+      "profit": 420,
+      "markup": 30,
+      "contract_end": "2024-12-20",
+      "auto_renewal": true,
+      "payment_status": "current",
+      "last_payment": "2024-01-01",
+      "usage_trend": "growing",
+      "expansion_score": 95,
+      "risk_score": 5
+    },
+    {
+      "si_id": "si_003",
+      "si_name": "DataSync Partners",
+      "allocated": 20,
+      "used": 16,
+      "available": 4,
+      "utilization": 80,
+      "monthly_cost": 900,
+      "monthly_revenue": 1080,
+      "profit": 180,
+      "markup": 20,
+      "contract_end": "2024-06-30",
+      "auto_renewal": false,
+      "payment_status": "overdue",
+      "last_payment": "2023-12-01",
+      "usage_trend": "declining",
+      "expansion_score": 35,
+      "risk_score": 85
+    },
+    {
+      "si_id": "si_004",
+      "si_name": "NetSecure Ltd",
+      "allocated": 40,
+      "used": 38,
+      "available": 2,
+      "utilization": 95,
+      "monthly_cost": 1600,
+      "monthly_revenue": 2240,
+      "profit": 640,
+      "markup": 40,
+      "contract_end": "2025-03-10",
+      "auto_renewal": true,
+      "payment_status": "current",
+      "last_payment": "2024-01-01",
+      "usage_trend": "growing",
+      "expansion_score": 98,
+      "risk_score": 2
+    },
+    {
+      "si_id": "si_005",
+      "si_name": "InnoTech Hub",
+      "allocated": 30,
+      "used": 24,
+      "available": 6,
+      "utilization": 80,
+      "monthly_cost": 1200,
+      "monthly_revenue": 1440,
+      "profit": 240,
+      "markup": 20,
+      "contract_end": "2024-11-15",
+      "auto_renewal": true,
+      "payment_status": "current",
+      "last_payment": "2024-01-01",
+      "usage_trend": "stable",
+      "expansion_score": 65,
+      "risk_score": 25
+    }
+  ],
+  "token_consumption": {
+    "total_monthly_tokens": 45780000,
+    "cost_per_token": 0.002,
+    "monthly_token_cost": 91560,
+    "efficiency_score": 87,
+    "peak_usage_hours": ["10:00", "14:00", "16:00"],
+    "top_consuming_sis": [
+      {
+        "si_name": "NetSecure Ltd",
+        "tokens": 8920000,
+        "cost": 17840,
+        "efficiency": 91,
+        "growth": 31.4
+      },
+      {
+        "si_name": "CloudPro Services", 
+        "tokens": 7650000,
+        "cost": 15300,
+        "efficiency": 88,
+        "growth": 25.2
+      },
+      {
+        "si_name": "TechFlow Solutions",
+        "tokens": 6340000,
+        "cost": 12680,
+        "efficiency": 85,
+        "growth": 18.5
+      }
+    ]
+  },
+  "billing_analytics": {
+    "monthly_recurring_revenue": 89450,
+    "annual_recurring_revenue": 1073400,
+    "churn_rate": 2.1,
+    "expansion_revenue": 18900,
+    "contraction_revenue": 2100,
+    "net_revenue_retention": 125,
+    "customer_lifetime_value": 156000,
+    "payback_period": 8.5,
+    "overdue_amount": 3240,
+    "collection_rate": 97.8
+  },
+  "capacity_forecasting": [
+    { "month": "Feb", "demand": 920, "confidence": 94, "revenue": 95800 },
+    { "month": "Mar", "demand": 980, "confidence": 91, "revenue": 102100 },
+    { "month": "Apr", "demand": 1050, "confidence": 87, "revenue": 109200 },
+    { "month": "May", "demand": 1120, "confidence": 84, "revenue": 116800 },
+    { "month": "Jun", "demand": 1200, "confidence": 80, "revenue": 125000 }
+  ]
+}

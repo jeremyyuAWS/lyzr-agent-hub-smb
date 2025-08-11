@@ -1,0 +1,724 @@
+{
+  "welcome": {
+    "msp": {
+      "title": "Welcome to Lyzr Control Tower - MSP Command Center",
+      "subtitle": "Your complete platform for managing 47 System Integrators and 284 SMB customers",
+      "overview": "As an MSP Super Admin, you have full control over your partner ecosystem. Monitor revenue, allocate licenses, manage users, and scale your AI-powered business across multiple tiers.",
+      "key_benefits": [
+        "Manage $89K+ monthly recurring revenue across your ecosystem",
+        "Real-time visibility into 850+ allocated licenses and utilization rates",
+        "Advanced analytics covering 1,847 users and 15,672 monthly agent calls",
+        "Predictive capacity planning and automated expansion recommendations"
+      ],
+      "getting_started": [
+        "Start with the Dashboard to see your ecosystem health at a glance",
+        "Use License Management to optimize allocation and identify expansion opportunities", 
+        "Monitor User Activity to ensure security compliance and engagement",
+        "Review Insights for AI-powered growth recommendations"
+      ],
+      "success_metrics": "Track ecosystem ROI (340%), partner growth (+23.5%), and license efficiency (85%)"
+    },
+    "si": {
+      "title": "Welcome to CloudPro Services AI Platform",
+      "subtitle": "Your white-labeled portal for managing 35 SMB clients and growing your AI services business",
+      "overview": "As a System Integrator, you're empowered to deliver AI solutions to your SMB clients while maintaining your brand identity. Scale your portfolio, optimize client success, and maximize your revenue potential.",
+      "key_benefits": [
+        "Generate $18.7K monthly revenue with 25.2% growth rate",
+        "Manage 35 SMB clients with 91% license utilization efficiency",
+        "Deploy specialized AI agents tailored to client industry needs",
+        "Access white-label branding and custom domain configuration"
+      ],
+      "getting_started": [
+        "Review your Portfolio Dashboard to identify top-performing clients",
+        "Use Agent Gallery to deploy new solutions to client teams",
+        "Monitor License Usage to optimize allocation across your client base",
+        "Configure Settings for custom branding and client onboarding"
+      ],
+      "success_metrics": "Track client satisfaction (4.6/5), portfolio growth (+25.2%), and license efficiency (91%)"
+    },
+    "smb": {
+      "title": "Welcome to Global Dynamics AI Hub",
+      "subtitle": "Your team's productivity platform powered by specialized AI agents",
+      "overview": "Transform your 24-person team's productivity with AI-powered automation. Access specialized agents for Marketing, Finance, and Operations while tracking real-time savings and efficiency gains.",
+      "key_benefits": [
+        "Achieve $12.6K monthly cost savings and 32% productivity gains",
+        "Access 6 specialized AI agents tailored to your business functions",
+        "Track team performance across Marketing, Finance, and Operations",
+        "Generate professional outputs 45% faster than manual processes"
+      ],
+      "getting_started": [
+        "Launch your first agent from the Agent Hub to see immediate results",
+        "Check Team Analytics to identify optimization opportunities",
+        "Review Usage Reports to track your team's productivity improvements",
+        "Invite team members and assign appropriate agent permissions"
+      ],
+      "success_metrics": "Monitor productivity gains (32%), cost savings ($12.6K), and team adoption (22/24 active users)"
+    }
+  },
+  "help": {
+    "dashboard": {
+      "msp": {
+        "title": "MSP Dashboard - Ecosystem Command Center",
+        "description": "Monitor your entire partner ecosystem with real-time metrics, revenue tracking, and performance analytics.",
+        "features": [
+          {
+            "name": "Partner Performance Metrics",
+            "description": "Gain complete visibility into System Integrator performance across your ecosystem"
+          },
+          {
+            "name": "Revenue Analytics",
+            "description": "Access comprehensive revenue insights with trend analysis and forecasting capabilities"
+          },
+          {
+            "name": "License Utilization",
+            "description": "Monitor license allocation efficiency and utilization across your partner network"
+          },
+          {
+            "name": "Growth Indicators",
+            "description": "Receive intelligent notifications about expansion opportunities and partner health alerts"
+          }
+        ],
+        "tips": [
+          "Monitor partner health indicators to proactively identify expansion opportunities",
+          "Set up alerts for high utilization rates to prevent capacity constraints", 
+          "Use trend analytics to identify seasonal patterns and optimize capacity planning"
+        ]
+      },
+      "si": {
+        "title": "SI Portfolio Dashboard - Client Management Hub",
+        "description": "Manage your SMB client portfolio with comprehensive analytics and growth insights.",
+        "features": [
+          {
+            "name": "Client Portfolio Metrics",
+            "description": "Gain visibility into client health indicators and performance metrics"
+          },
+          {
+            "name": "Revenue Growth Tracking",
+            "description": "Access detailed revenue insights with client-level performance analysis"
+          },
+          {
+            "name": "License Efficiency",
+            "description": "Monitor and optimize license utilization across your client base"
+          },
+          {
+            "name": "Client Performance Ranking",
+            "description": "Receive notifications about client performance changes and support needs"
+          }
+        ],
+        "tips": [
+          "Monitor client efficiency scores to identify expansion opportunities",
+          "Set up notifications for clients with declining utilization rates",
+          "Use trend analysis features to predict renewal probability and growth potential"
+        ]
+      },
+      "smb": {
+        "title": "SMB Team Dashboard - Productivity Command Center", 
+        "description": "Monitor your team's AI adoption, productivity gains, and cost savings in real-time.",
+        "features": [
+          {
+            "name": "Team Productivity Metrics",
+            "description": "Gain visibility into productivity improvements and cost savings across departments"
+          },
+          {
+            "name": "Department Performance",
+            "description": "Compare department efficiency and identify high-performing teams"
+          },
+          {
+            "name": "Usage Analytics",
+            "description": "Access detailed usage insights with trend analysis and adoption tracking"
+          },
+          {
+            "name": "ROI Tracking",
+            "description": "Receive notifications about ROI achievements and optimization opportunities"
+          }
+        ],
+        "tips": [
+          "Monitor department adoption rates to identify teams needing additional support",
+          "Use performance insights to share best practices across departments",
+          "Set up notifications for individual users who could benefit from additional training"
+        ]
+      }
+    },
+    "agents": {
+      "msp": {
+        "title": "MSP Agent Gallery - Ecosystem Agent Management",
+        "description": "Deploy and manage AI agents across your System Integrator partners with comprehensive analytics.",
+        "features": [
+          {
+            "name": "Agent Performance Analytics",
+            "description": "Gain visibility into agent adoption rates and performance across your ecosystem"
+          },
+          {
+            "name": "Deployment Metrics",
+            "description": "Monitor agent deployment success rates and rollout progress"
+          },
+          {
+            "name": "Usage Intelligence",
+            "description": "Access insights on agent utilization patterns and identify expansion opportunities"
+          },
+          {
+            "name": "Partner Agent Strategy",
+            "description": "Receive notifications and recommendations for optimal agent deployment strategies"
+          }
+        ],
+        "tips": [
+          "Monitor adoption rates to identify agents needing additional partner training",
+          "Use vertical-specific insights to guide agent deployment recommendations",
+          "Track revenue impact metrics to optimize agent portfolio strategy"
+        ]
+      },
+      "si": {
+        "title": "SI Agent Gallery - Client Solution Deployment",
+        "description": "Deploy specialized AI agents to your SMB clients based on their industry and specific needs.",
+        "features": [
+          {
+            "name": "Client-Specific Deployment",
+            "description": "Access features for deploying optimal agent combinations based on client industry"
+          },
+          {
+            "name": "Industry Templates",
+            "description": "Utilize pre-configured agent bundles designed for different industry verticals"
+          },
+          {
+            "name": "Usage Monitoring",
+            "description": "Monitor agent adoption rates and success metrics across your portfolio"
+          },
+          {
+            "name": "Revenue Optimization",
+            "description": "Receive notifications about upselling opportunities based on usage insights"
+          }
+        ],
+        "tips": [
+          "Use industry-specific insights to recommend optimal agent combinations",
+          "Monitor client needs to deploy compliance-focused agents where appropriate",
+          "Set up notifications for clients showing growth patterns that indicate expansion opportunities"
+        ]
+      },
+      "smb": {
+        "title": "SMB Agent Hub - Your AI-Powered Productivity Suite",
+        "description": "Access your licensed AI agents to automate tasks and boost team productivity.",
+        "features": [
+          {
+            "name": "Licensed Agent Access",
+            "description": "Quick access to launch your licensed agents with streamlined execution"
+          },
+          {
+            "name": "Execution History",
+            "description": "Full visibility into previous agent outputs with workflow reuse capabilities"
+          },
+          {
+            "name": "Team Collaboration",
+            "description": "Built-in features for sharing outputs and collaborative workflow development"
+          },
+          {
+            "name": "Performance Tracking",
+            "description": "Comprehensive insights and notifications about productivity improvements and time savings"
+          }
+        ],
+        "tips": [
+          "Monitor top performer usage patterns to identify best practices for your team",
+          "Track time savings metrics to demonstrate value and optimize workflows",
+          "Use cross-training insights to maximize agent adoption across departments"
+        ]
+      }
+    },
+    "licenses": {
+      "msp": {
+        "title": "MSP License Management - Global Pool Administration",
+        "description": "Manage your global license pool with intelligent allocation and capacity planning.",
+        "features": [
+          {
+            "name": "Global Pool Management",
+            "description": "Complete visibility into license allocation and utilization across your ecosystem"
+          },
+          {
+            "name": "SI Allocation Strategy",
+            "description": "Strategic license distribution features based on partner growth potential and performance"
+          },
+          {
+            "name": "Revenue Optimization",
+            "description": "Revenue optimization insights through intelligent pricing and allocation strategies"
+          },
+          {
+            "name": "Capacity Forecasting",
+            "description": "Advanced forecasting capabilities with notifications about future capacity needs"
+          }
+        ],
+        "tips": [
+          "Set up notifications for partners approaching high utilization thresholds",
+          "Use forecasting insights to plan capacity expansion ahead of demand",
+          "Monitor growth indicators to identify partners ready for premium allocations"
+        ]
+      },
+      "si": {
+        "title": "SI License Portfolio - Client Allocation Management",
+        "description": "Optimize your allocated licenses across SMB clients for maximum revenue and efficiency.",
+        "features": [
+          {
+            "name": "Client License Distribution",
+            "description": "Strategic allocation features based on client team size and usage patterns"
+          },
+          {
+            "name": "Utilization Optimization",
+            "description": "Optimization tools for maintaining high efficiency while supporting client growth"
+          },
+          {
+            "name": "Revenue Tracking",
+            "description": "Comprehensive revenue insights with markup optimization capabilities"
+          },
+          {
+            "name": "Expansion Planning",
+            "description": "Smart notifications identifying clients ready for license expansion"
+          }
+        ],
+        "tips": [
+          "Monitor client utilization rates to identify expansion opportunities",
+          "Use pipeline insights to proactively request additional licenses from your MSP",
+          "Set up notifications for clients with declining efficiency to provide targeted support"
+        ]
+      },
+      "smb": {
+        "title": "SMB License Usage - Team Optimization",
+        "description": "Maximize value from your allocated licenses across your team.",
+        "features": [
+          {
+            "name": "Department Allocation",
+            "description": "Strategic license distribution features across your departments"
+          },
+          {
+            "name": "Usage Efficiency",
+            "description": "Complete visibility into usage efficiency with optimization recommendations"
+          },
+          {
+            "name": "ROI Measurement",
+            "description": "Comprehensive ROI tracking with detailed savings insights"
+          },
+          {
+            "name": "Renewal Planning",
+            "description": "Smart notifications about renewal timing based on usage patterns and team satisfaction"
+          }
+        ],
+        "tips": [
+          "Monitor department utilization to identify teams needing additional training",
+          "Receive notifications about unused licenses and their potential value",
+          "Track utilization peaks to identify when to request license expansion"
+        ]
+      }
+    },
+    "users": {
+      "msp": {
+        "title": "MSP User Management - Ecosystem Administration",
+        "description": "Manage users across all tenants with advanced security and compliance features.",
+        "features": [
+          {
+            "name": "Global User Directory",
+            "description": "Complete visibility into all user accounts across your ecosystem"
+          },
+          {
+            "name": "SSO Administration",
+            "description": "Advanced SSO configuration features for enterprise-grade security"
+          },
+          {
+            "name": "Security Compliance",
+            "description": "Comprehensive security monitoring with compliance tracking and incident notifications"
+          },
+          {
+            "name": "Activity Intelligence",
+            "description": "Detailed user activity insights with geographic and feature usage analytics"
+          }
+        ],
+        "tips": [
+          "Monitor MFA adoption rates and set up notifications for security policy improvements",
+          "Use SSO configuration insights to prioritize tenant onboarding efforts",
+          "Leverage geographic analytics to optimize regional support and performance"
+        ]
+      },
+      "si": {
+        "title": "SI User Management - Team and Client Administration",
+        "description": "Manage your internal team and coordinate SMB client user administration across your portfolio.",
+        "features": [
+          {
+            "name": "Internal Team Management",
+            "description": "Complete visibility and control over your internal team with role-based access"
+          },
+          {
+            "name": "Client User Coordination",
+            "description": "Comprehensive features for supporting client user management across your portfolio"
+          },
+          {
+            "name": "SSO Configuration",
+            "description": "Enterprise SSO setup capabilities for your high-value clients"
+          },
+          {
+            "name": "Support & Training",
+            "description": "Built-in tools and notifications for client onboarding and ongoing support"
+          }
+        ],
+        "tips": [
+          "Monitor SSO configuration status to ensure enterprise clients have seamless access",
+          "Set up notifications for clients needing SSO configuration",
+          "Use training insights to improve client self-service capabilities"
+        ]
+      },
+      "smb": {
+        "title": "SMB User Management - Team Administration",
+        "description": "Manage your team with department-based roles and agent access controls.",
+        "features": [
+          {
+            "name": "Team Directory",
+            "description": "Complete visibility into your team members across all departments"
+          },
+          {
+            "name": "Role Assignment",
+            "description": "Flexible role assignment features for department and individual user needs"
+          },
+          {
+            "name": "Performance Tracking",
+            "description": "Comprehensive performance insights with productivity and usage analytics"
+          },
+          {
+            "name": "Access Controls",
+            "description": "Advanced security features with permissions management and audit notifications"
+          }
+        ],
+        "tips": [
+          "Identify power users to share best practices across departments",
+          "Monitor productivity metrics to identify teams needing additional training",
+          "Set up notifications for inactive users to improve platform engagement"
+        ]
+      }
+    },
+    "tenants": {
+      "msp": {
+        "title": "MSP Tenant Management - Partner Ecosystem Control",
+        "description": "Oversee your complete tenant ecosystem including System Integrators and SMB customers.",
+        "features": [
+          {
+            "name": "Partner Hierarchy Management",
+            "description": "Complete visibility into your 3-tier ecosystem relationships and hierarchy"
+          },
+          {
+            "name": "Onboarding Workflows",
+            "description": "Advanced onboarding features for new partners and client acquisition support"
+          },
+          {
+            "name": "Health Monitoring",
+            "description": "Comprehensive health insights with engagement tracking and risk notifications"
+          },
+          {
+            "name": "Revenue Attribution",
+            "description": "Complete revenue visibility with attribution tracking across all ecosystem levels"
+          }
+        ],
+        "tips": [
+          "Monitor partner growth indicators to identify expansion opportunities",
+          "Set up payment notifications to proactively address billing issues",
+          "Use vertical insights to identify specialized partnership opportunities"
+        ]
+      },
+      "si": {
+        "title": "SI Tenant Management - SMB Client Portfolio",
+        "description": "Manage your SMB client relationships with portfolio optimization and growth strategies.",
+        "features": [
+          {
+            "name": "Client Portfolio View",
+            "description": "Complete visibility into your client portfolio with health and performance indicators"
+          },
+          {
+            "name": "Industry Segmentation",
+            "description": "Industry-specific management features with tailored approach recommendations"
+          },
+          {
+            "name": "Client Lifecycle",
+            "description": "Comprehensive lifecycle tracking with onboarding, expansion, and renewal insights"
+          },
+          {
+            "name": "Support Coordination",
+            "description": "Integrated support tools with notifications for tickets, training, and success planning"
+          }
+        ],
+        "tips": [
+          "Monitor client growth patterns to identify expansion opportunities",
+          "Set up support notifications for clients showing declining engagement",
+          "Use adoption insights to create industry-specific solution bundles"
+        ]
+      },
+      "smb": {
+        "title": "SMB Tenant Management - Internal Organization",
+        "description": "Optimize your organization structure and department coordination within your tenant.",
+        "features": [
+          {
+            "name": "Department Structure",
+            "description": "Flexible organizational features for department structure and team coordination"
+          },
+          {
+            "name": "Resource Allocation",
+            "description": "Strategic resource allocation tools for optimal license and access distribution"
+          },
+          {
+            "name": "Collaboration Tools",
+            "description": "Built-in collaboration features for sharing outputs and best practices"
+          },
+          {
+            "name": "Performance Analytics",
+            "description": "Comprehensive performance insights with improvement notifications and recommendations"
+          }
+        ],
+        "tips": [
+          "Use efficiency insights to identify mentoring opportunities between departments",
+          "Implement cross-training notifications to increase team flexibility",
+          "Monitor utilization patterns to identify optimal organizational structure changes"
+        ]
+      }
+    },
+    "insights": {
+      "msp": {
+        "title": "MSP Insights - Ecosystem Intelligence",
+        "description": "AI-powered analytics and forecasting for strategic ecosystem management and growth planning.",
+        "features": [
+          {
+            "name": "Predictive Analytics",
+            "description": "Advanced forecasting capabilities with notifications about future trends and opportunities"
+          },
+          {
+            "name": "Market Intelligence",
+            "description": "Comprehensive market insights with competitive analysis and positioning features"
+          },
+          {
+            "name": "Partner Success Scoring",
+            "description": "Intelligent partner health scoring with risk notifications and success predictions"
+          },
+          {
+            "name": "Revenue Optimization",
+            "description": "Advanced revenue insights with pricing optimization and strategy recommendations"
+          }
+        ],
+        "tips": [
+          "Use predictive notifications to prepare for capacity expansion ahead of demand",
+          "Monitor vertical-specific insights to guide partnership development strategies",
+          "Set up churn risk notifications to proactively address partner concerns"
+        ]
+      },
+      "si": {
+        "title": "SI Insights - Portfolio Intelligence",
+        "description": "Advanced analytics for optimizing your SMB client portfolio and maximizing business outcomes.",
+        "features": [
+          {
+            "name": "Client Success Prediction",
+            "description": "Predictive insights with notifications about client expansion and renewal likelihood"
+          },
+          {
+            "name": "Revenue Forecasting",
+            "description": "Advanced revenue forecasting with growth opportunity identification features"
+          },
+          {
+            "name": "Competitive Analysis",
+            "description": "Competitive benchmarking insights with performance comparison features"
+          },
+          {
+            "name": "Optimization Recommendations",
+            "description": "Intelligent optimization notifications with actionable recommendations for client success"
+          }
+        ],
+        "tips": [
+          "Monitor renewal probability scores to time expansion conversations appropriately",
+          "Use client response insights to optimize agent combination recommendations",
+          "Set up satisfaction-based notifications to identify portfolio expansion opportunities"
+        ]
+      },
+      "smb": {
+        "title": "SMB Insights - Team Intelligence",
+        "description": "Data-driven insights to optimize team productivity and maximize ROI from your AI investment.",
+        "features": [
+          {
+            "name": "Productivity Analytics",
+            "description": "Comprehensive productivity insights with forecasting and improvement notifications"
+          },
+          {
+            "name": "ROI Optimization",
+            "description": "Advanced ROI tracking with optimization features and investment recommendations"
+          },
+          {
+            "name": "Usage Intelligence",
+            "description": "Deep usage insights revealing highest-value agents and workflows"
+          },
+          {
+            "name": "Team Development",
+            "description": "Personalized development notifications and recommendations for team performance optimization"
+          }
+        ],
+        "tips": [
+          "Use usage pattern insights to identify cross-department efficiency opportunities",
+          "Monitor license utilization notifications to minimize opportunity costs",
+          "Implement cross-training recommendations to maximize team-wide productivity"
+        ]
+      }
+    },
+    "reports": {
+      "msp": {
+        "title": "MSP Reports - Executive Analytics",
+        "description": "Comprehensive reporting suite for strategic decision-making and stakeholder communication.",
+        "features": [
+          {
+            "name": "Executive Dashboards",
+            "description": "Strategic executive insights with presentation-ready visualizations and key metrics"
+          },
+          {
+            "name": "Partner Performance Reports",
+            "description": "Comprehensive partner analytics with performance tracking and growth insights"
+          },
+          {
+            "name": "Financial Analytics",
+            "description": "Advanced financial insights with revenue analysis and forecasting capabilities"
+          },
+          {
+            "name": "Operational Reports",
+            "description": "Detailed operational analytics with utilization tracking and performance notifications"
+          }
+        ],
+        "tips": [
+          "Use executive reporting features to highlight ecosystem growth and success metrics",
+          "Leverage performance variance insights to identify and share best practices",
+          "Monitor seasonal pattern notifications to optimize capacity and resource planning"
+        ]
+      },
+      "si": {
+        "title": "SI Reports - Portfolio Analytics",
+        "description": "Detailed reporting for managing your SMB client portfolio and business performance.",
+        "features": [
+          {
+            "name": "Client Performance Reports",
+            "description": "Comprehensive client analytics with individual and portfolio-wide performance insights"
+          },
+          {
+            "name": "Revenue Analysis",
+            "description": "Advanced revenue insights with attribution tracking and growth analysis features"
+          },
+          {
+            "name": "Operational Efficiency",
+            "description": "Operational efficiency insights with utilization tracking and satisfaction notifications"
+          },
+          {
+            "name": "Business Development",
+            "description": "Business development insights with pipeline analysis and opportunity notifications"
+          }
+        ],
+        "tips": [
+          "Use client health insights to identify and prioritize expansion-ready accounts",
+          "Monitor vertical analysis features to optimize industry-specific strategies",
+          "Leverage executive-ready report formats for effective client business reviews"
+        ]
+      },
+      "smb": {
+        "title": "SMB Reports - Team Performance Analytics",
+        "description": "Actionable reports for measuring and communicating your team's AI-driven productivity gains.",
+        "features": [
+          {
+            "name": "Productivity Reports",
+            "description": "Comprehensive productivity insights with detailed time-saving analytics and team metrics"
+          },
+          {
+            "name": "ROI Analysis",
+            "description": "Advanced ROI insights with detailed investment analysis and value tracking features"
+          },
+          {
+            "name": "Department Comparisons",
+            "description": "Cross-department analytics with performance comparisons and best practice notifications"
+          },
+          {
+            "name": "Executive Summaries",
+            "description": "Executive-ready reporting features for communicating AI initiative success and value"
+          }
+        ],
+        "tips": [
+          "Use productivity insights to create compelling leadership presentations",
+          "Monitor department comparison features to identify and share best practices",
+          "Leverage ROI reporting capabilities to support budget and expansion requests"
+        ]
+      }
+    },
+    "settings": {
+      "msp": {
+        "title": "MSP Settings - Platform Administration",
+        "description": "Configure platform-wide settings, security policies, and system administration features.",
+        "features": [
+          {
+            "name": "Security Policies",
+            "description": "Comprehensive security configuration with policy management and access control features"
+          },
+          {
+            "name": "White-label Configuration",
+            "description": "Advanced white-labeling features for partner branding and platform customization"
+          },
+          {
+            "name": "API Management",
+            "description": "Complete API management with key generation, rate limiting, and integration insights"
+          },
+          {
+            "name": "System Monitoring",
+            "description": "Comprehensive system monitoring with health notifications and performance insights"
+          }
+        ],
+        "tips": [
+          "Monitor API usage patterns and set up notifications for unusual activity",
+          "Use security insights to implement progressive MFA enforcement policies",
+          "Set up SSL certificate renewal notifications to prevent service disruptions"
+        ]
+      },
+      "si": {
+        "title": "SI Settings - Business Configuration",
+        "description": "Customize your platform experience and configure client-facing features.",
+        "features": [
+          {
+            "name": "Branding Customization",
+            "description": "Complete branding customization features for your white-labeled platform experience"
+          },
+          {
+            "name": "Client Onboarding",
+            "description": "Automated onboarding features with workflow templates and client setup notifications"
+          },
+          {
+            "name": "Integration Settings",
+            "description": "Advanced integration capabilities with webhook management and third-party tool connections"
+          },
+          {
+            "name": "Billing Configuration",
+            "description": "Comprehensive billing features with payment processing and automated invoicing capabilities"
+          }
+        ],
+        "tips": [
+          "Monitor SSL status notifications to ensure uninterrupted client access",
+          "Use webhook integration insights to automate and optimize client workflows",
+          "Leverage billing automation features to improve cash flow and reduce manual processes"
+        ]
+      },
+      "smb": {
+        "title": "SMB Settings - Team Configuration",
+        "description": "Manage your organization settings, user preferences, and integration configurations.",
+        "features": [
+          {
+            "name": "Organization Setup",
+            "description": "Complete organization management features for profile, contact, and billing configuration"
+          },
+          {
+            "name": "User Preferences",
+            "description": "Comprehensive user preference settings with notification management and accessibility features"
+          },
+          {
+            "name": "Integration Management",
+            "description": "Business tool integration capabilities with popular productivity platforms"
+          },
+          {
+            "name": "Security Settings",
+            "description": "Advanced security configuration with policy management and access control notifications"
+          }
+        ],
+        "tips": [
+          "Monitor integration status to ensure seamless document access for your agents",
+          "Use security insights to expand MFA adoption across your entire team",
+          "Set up contract renewal notifications to review usage and plan expansions"
+        ]
+      }
+    }
+  }
+}

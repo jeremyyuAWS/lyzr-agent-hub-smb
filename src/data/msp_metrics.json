@@ -1,0 +1,10 @@
+{
+  "totalSIs": 47,
+  "totalSMBs": 284,
+  "activeAgents": 9,
+  "totalAgentCalls": 15672,
+  "monthlyRevenue": 89450,
+  "avgCallsPerSMB": 55,
+  "topPerformingAgent": "Finance Agent",
+  "growthRate": 23.5
+}

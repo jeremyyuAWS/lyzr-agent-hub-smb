@@ -1,0 +1,252 @@
+{
+  "ecosystem_overview": {
+    "total_users": 1847,
+    "active_users": 1623,
+    "msp_admins": 8,
+    "si_admins": 47,
+    "smb_owners": 284,
+    "smb_admins": 156,
+    "smb_users": 1352,
+    "sso_enabled_tenants": 89,
+    "mfa_enabled_users": 1245,
+    "last_login_24h": 892,
+    "new_users_this_month": 67,
+    "user_growth_rate": 15.3
+  },
+  "msp_users": [
+    {
+      "id": "msp_admin_001",
+      "name": "Sarah Mitchell",
+      "email": "sarah.mitchell@lyzr.ai",
+      "role": "MSP Super Admin",
+      "status": "active",
+      "last_login": "2024-01-15T09:30:00Z",
+      "created": "2023-01-15T00:00:00Z",
+      "permissions": ["manage_all", "billing", "analytics", "user_mgmt"],
+      "mfa_enabled": true,
+      "login_count": 1247,
+      "favorite_features": ["Partner Analytics", "Revenue Dashboard"]
+    },
+    {
+      "id": "msp_admin_002", 
+      "name": "Michael Chen",
+      "email": "michael.chen@lyzr.ai",
+      "role": "MSP Operations Admin",
+      "status": "active",
+      "last_login": "2024-01-15T11:45:00Z",
+      "created": "2023-02-20T00:00:00Z",
+      "permissions": ["partner_mgmt", "license_allocation", "analytics"],
+      "mfa_enabled": true,
+      "login_count": 892,
+      "favorite_features": ["License Manager", "Partner Health"]
+    },
+    {
+      "id": "msp_admin_003",
+      "name": "Jennifer Rodriguez",
+      "email": "jennifer.rodriguez@lyzr.ai", 
+      "role": "MSP Revenue Admin",
+      "status": "active",
+      "last_login": "2024-01-15T08:15:00Z",
+      "created": "2023-03-10T00:00:00Z",
+      "permissions": ["billing", "revenue_analytics", "forecasting"],
+      "mfa_enabled": true,
+      "login_count": 756,
+      "favorite_features": ["Revenue Forecasting", "Billing Dashboard"]
+    }
+  ],
+  "si_users": [
+    {
+      "si_id": "si_002",
+      "si_name": "CloudPro Services",
+      "total_users": 24,
+      "admins": [
+        {
+          "id": "si_admin_002",
+          "name": "David Thompson",
+          "email": "david@cloudpro.com",
+          "role": "SI Owner",
+          "status": "active",
+          "last_login": "2024-01-15T10:20:00Z",
+          "created": "2023-06-15T00:00:00Z",
+          "permissions": ["manage_clients", "billing", "branding", "user_mgmt"],
+          "mfa_enabled": true,
+          "clients_managed": 35,
+          "revenue_responsibility": 18750
+        },
+        {
+          "id": "si_admin_002b",
+          "name": "Lisa Park",
+          "email": "lisa@cloudpro.com",
+          "role": "SI Operations Admin",
+          "status": "active", 
+          "last_login": "2024-01-15T09:45:00Z",
+          "created": "2023-07-01T00:00:00Z",
+          "permissions": ["client_support", "agent_deployment", "analytics"],
+          "mfa_enabled": true,
+          "clients_managed": 15,
+          "support_tickets_resolved": 234
+        }
+      ]
+    },
+    {
+      "si_id": "si_004",
+      "si_name": "NetSecure Ltd",
+      "total_users": 32,
+      "admins": [
+        {
+          "id": "si_admin_004",
+          "name": "Robert Kim",
+          "email": "robert@netsecure.com",
+          "role": "SI Owner",
+          "status": "active",
+          "last_login": "2024-01-15T07:30:00Z",
+          "created": "2023-04-10T00:00:00Z",
+          "permissions": ["manage_clients", "billing", "branding", "user_mgmt"],
+          "mfa_enabled": true,
+          "clients_managed": 42,
+          "revenue_responsibility": 21890
+        }
+      ]
+    }
+  ],
+  "smb_users": [
+    {
+      "smb_id": "smb_004",
+      "smb_name": "Global Dynamics",
+      "total_users": 24,
+      "active_users": 22,
+      "owner": {
+        "id": "smb_owner_004",
+        "name": "Amanda Foster",
+        "email": "amanda.foster@globaldynamics.com",
+        "role": "SMB Owner",
+        "status": "active",
+        "last_login": "2024-01-15T08:00:00Z",
+        "created": "2023-06-20T00:00:00Z",
+        "permissions": ["manage_all", "billing", "user_mgmt"],
+        "mfa_enabled": true,
+        "department": "Executive",
+        "agent_usage": 45
+      },
+      "admins": [
+        {
+          "id": "smb_admin_004a",
+          "name": "Mark Williams",
+          "email": "mark.williams@globaldynamics.com",
+          "role": "SMB Admin",
+          "department": "IT",
+          "status": "active",
+          "last_login": "2024-01-15T09:15:00Z",
+          "permissions": ["user_mgmt", "agent_config"],
+          "mfa_enabled": true,
+          "users_managed": 24,
+          "agent_usage": 23
+        }
+      ],
+      "users": [
+        {
+          "id": "smb_user_004a",
+          "name": "Sarah Chen",
+          "email": "sarah.chen@globaldynamics.com",
+          "role": "SMB User",
+          "department": "Marketing",
+          "status": "active",
+          "last_login": "2024-01-15T10:30:00Z",
+          "agent_permissions": ["Marketing Agent", "Analytics Agent"],
+          "monthly_agent_calls": 24,
+          "favorite_agent": "Marketing Agent",
+          "productivity_score": 94,
+          "outputs_created": 47
+        },
+        {
+          "id": "smb_user_004b",
+          "name": "Mike Rodriguez", 
+          "email": "mike.rodriguez@globaldynamics.com",
+          "role": "SMB User",
+          "department": "Finance",
+          "status": "active",
+          "last_login": "2024-01-15T08:45:00Z",
+          "agent_permissions": ["Finance Agent", "Analytics Agent"],
+          "monthly_agent_calls": 19,
+          "favorite_agent": "Finance Agent",
+          "productivity_score": 89,
+          "outputs_created": 32
+        },
+        {
+          "id": "smb_user_004c",
+          "name": "Emily Johnson",
+          "email": "emily.johnson@globaldynamics.com",
+          "role": "SMB User", 
+          "department": "Operations",
+          "status": "active",
+          "last_login": "2024-01-14T16:20:00Z",
+          "agent_permissions": ["Operations Agent", "Support Agent"],
+          "monthly_agent_calls": 12,
+          "favorite_agent": "Operations Agent",
+          "productivity_score": 76,
+          "outputs_created": 18
+        }
+      ]
+    }
+  ],
+  "sso_configuration": {
+    "enabled_tenants": 89,
+    "total_tenants": 331,
+    "adoption_rate": 26.9,
+    "providers": [
+      { "provider": "Azure AD", "tenants": 42, "users": 892 },
+      { "provider": "Okta", "tenants": 28, "users": 567 },
+      { "provider": "Google Workspace", "tenants": 19, "users": 234 }
+    ],
+    "pending_configurations": [
+      {
+        "tenant": "NetSecure Ltd",
+        "provider": "Azure AD",
+        "status": "in_progress",
+        "completion": 75,
+        "estimated_completion": "2024-01-20"
+      },
+      {
+        "tenant": "MedTech Solutions",
+        "provider": "Okta", 
+        "status": "pending_approval",
+        "completion": 25,
+        "estimated_completion": "2024-01-25"
+      }
+    ]
+  },
+  "user_activity": {
+    "daily_active_users": 892,
+    "weekly_active_users": 1245,
+    "monthly_active_users": 1623,
+    "average_session_duration": 47.5,
+    "peak_usage_hours": ["09:00", "14:00", "16:00"],
+    "feature_usage": [
+      { "feature": "Agent Gallery", "users": 1456, "percentage": 89.7 },
+      { "feature": "Dashboard", "users": 1389, "percentage": 85.6 },
+      { "feature": "Reports", "users": 892, "percentage": 55.0 },
+      { "feature": "Tenant Management", "users": 234, "percentage": 14.4 }
+    ],
+    "login_analytics": {
+      "successful_logins": 15678,
+      "failed_logins": 234,
+      "success_rate": 98.5,
+      "countries": [
+        { "country": "United States", "users": 892, "percentage": 55.0 },
+        { "country": "Canada", "users": 234, "percentage": 14.4 },
+        { "country": "United Kingdom", "users": 156, "percentage": 9.6 },
+        { "country": "Australia", "users": 98, "percentage": 6.0 }
+      ]
+    }
+  },
+  "security_metrics": {
+    "mfa_adoption_rate": 76.7,
+    "password_policy_compliance": 94.2,
+    "suspicious_login_attempts": 45,
+    "blocked_ips": 12,
+    "security_incidents": 2,
+    "average_password_strength": 8.4,
+    "users_with_weak_passwords": 67,
+    "last_security_scan": "2024-01-14T22:00:00Z"
+  }
+}

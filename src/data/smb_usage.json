@@ -1,0 +1,47 @@
+[
+  {
+    "id": "smb_001",
+    "name": "Acme Corp",
+    "si": "TechFlow Solutions",
+    "agentCalls": 145,
+    "favoriteAgent": "Finance Agent",
+    "lastActive": "2024-01-15",
+    "status": "active"
+  },
+  {
+    "id": "smb_002",
+    "name": "Global Dynamics",
+    "si": "CloudPro Services", 
+    "agentCalls": 198,
+    "favoriteAgent": "Marketing Agent",
+    "lastActive": "2024-01-14",
+    "status": "active"
+  },
+  {
+    "id": "smb_003",
+    "name": "Stellar Industries",
+    "si": "DataSync Partners",
+    "agentCalls": 87,
+    "favoriteAgent": "Legal Agent",
+    "lastActive": "2024-01-13",
+    "status": "active"
+  },
+  {
+    "id": "smb_004",
+    "name": "Fusion Enterprises",
+    "si": "NetSecure Ltd",
+    "agentCalls": 234,
+    "favoriteAgent": "Finance Agent", 
+    "lastActive": "2024-01-15",
+    "status": "active"
+  },
+  {
+    "id": "smb_005",
+    "name": "Nexus Solutions",
+    "si": "InnoTech Hub",
+    "agentCalls": 156,
+    "favoriteAgent": "Operations Agent",
+    "lastActive": "2024-01-14",
+    "status": "active"
+  }
+]
