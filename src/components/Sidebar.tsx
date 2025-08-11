@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, Users, Headphones, UserCheck, DollarSign } from 'lucide-react';
+import { TrendingUp, Users, Headphones, UserCheck, DollarSign, Megaphone } from 'lucide-react';
 
 interface SidebarProps {
   activeCategory: string;
@@ -11,7 +11,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ activeCategory, onCategoryChange, activeTab, onTabChange }) => {
   const categories = [
     { id: 'sales', label: 'Sales', icon: TrendingUp, color: 'text-blue-600' },
-    { id: 'marketing', label: 'Marketing', icon: TrendingUp, color: 'text-green-600' },
+    { id: 'marketing', label: 'Marketing', icon: Megaphone, color: 'text-green-600' },
     { id: 'customer-service', label: 'Customer Service', icon: Headphones, color: 'text-purple-600' },
     { id: 'hr', label: 'HR', icon: UserCheck, color: 'text-orange-600' },
     { id: 'finance', label: 'Finance', icon: DollarSign, color: 'text-red-600' },
