@@ -156,22 +156,12 @@ const AgentGallery: React.FC<AgentGalleryProps> = ({ category }) => {
             {/* Action Button */}
             <div className="flex space-x-2">
               {agent.status === 'live' ? (
-                <>
-                  <button 
-                    onClick={() => handleLaunchAgent(agent)}
-                    className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                  >
-                    Launch Demo
-                  </button>
-                  {agent.demo_url && (
-                    <button
-                      onClick={() => window.open(agent.demo_url!, '_blank')}
-                      className="bg-white border border-gray-300 text-black py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      Live Demo
-                    </button>
-                  )}
-                </>
+                <button 
+                  onClick={() => handleLaunchAgent(agent)}
+                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
+                  Launch Demo
+                </button>
               ) : agent.status === 'coming_soon' ? (
                 <button className="w-full bg-yellow-100 border border-yellow-300 text-yellow-800 py-2 px-4 rounded-lg cursor-not-allowed font-medium">
                   Coming Soon
