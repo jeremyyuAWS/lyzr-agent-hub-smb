@@ -130,15 +130,6 @@ const AgentGallery: React.FC<AgentGalleryProps> = ({ category }) => {
                   </span>
                 </div>
               </div>
-              {agent.demo_url && (
-                <button
-                  onClick={() => window.open(agent.demo_url!, '_blank')}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
-                  title="View Live Demo"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </button>
-              )}
             </div>
 
             <p className="text-sm text-gray-700 mb-4 leading-relaxed">{agent.description}</p>
