@@ -129,30 +129,6 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
     localStorage.setItem('agentCustomOrder', JSON.stringify(newOrder));
   };
 
-  const handleCategoryDragStart = (e: React.DragEvent, categoryId: string) => {
-    setDraggedCategory(categoryId);
-    e.dataTransfer.effectAllowed = 'move';
-  };
-
-  const handleCategoryDrop = (e: React.DragEvent, dropIndex: number) => {
-    e.preventDefault();
-    
-    if (!draggedCategory) return;
-    
-    const draggedIndex = categories.findIndex(cat => cat.id === draggedCategory);
-    if (draggedIndex === -1) return;
-    
-    const newCategories = [...categories];
-    const [removed] = newCategories.splice(draggedIndex, 1);
-    newCategories.splice(dropIndex, 0, removed);
-    
-    onUpdateCategories(newCategories);
-    setDraggedCategory(null);
-    setDragOverIndex(null);
-    
-    showNotification('success', 'Category order updated successfully!');
-  };
-
   const handleDragStart = (e: React.DragEvent, agentId: string) => {
     setDraggedAgent(agentId);
     e.dataTransfer.effectAllowed = 'move';
@@ -207,149 +183,12 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
     showNotification('success', 'Reset to alphabetical order!');
   };
 
-  const handleAddCategory = () => {
-    if (!newCategory.label?.trim()) {
-      showNotification('error', 'Category name is required');
-      return;
-    }
-
-    const categoryId = newCategory.label.toLowerCase().replace(/[^a-z0-9]/g, '-');
-    
-    // Check if category ID already exists
-    if (categories.find(cat => cat.id === categoryId)) {
-      showNotification('error', 'A category with this name already exists');
-      return;
-    }
-
-    const category: Category = {
-      id: categoryId,
-      label: newCategory.label.trim(),
-      icon: newCategory.icon || 'TrendingUp',
-      color: newCategory.color || 'text-blue-600'
-    };
-
-    onUpdateCategories([...categories, category]);
-    showNotification('success', `${category.label} category added successfully!`);
-    
-    setNewCategory({
-      label: '',
-      icon: 'TrendingUp',
-      color: 'text-blue-600'
-    });
-    setIsAddingCategory(false);
-  };
-
-  const handleEditCategory = () => {
-    if (!editingCategory?.label?.trim()) {
-      showNotification('error', 'Category name is required');
-      return;
-    }
-
-    const updatedCategories = categories.map(cat => 
-      cat.id === editingCategory.id ? editingCategory : cat
-    );
-    
-    onUpdateCategories(updatedCategories);
-    showNotification('success', `${editingCategory.label} updated successfully!`);
-    setEditingCategory(null);
-  };
-
-  const handleDeleteCategory = (categoryId: string, categoryLabel: string) => {
-    // Check if any agents use this category
-    const agentsInCategory = agents.filter(agent => agent.category === categoryId);
-    
-    if (agentsInCategory.length > 0) {
-      showNotification('error', `Cannot delete ${categoryLabel} - it contains ${agentsInCategory.length} agents. Move or delete agents first.`);
-      return;
-    }
-    
-    if (confirm(`Are you sure you want to delete the "${categoryLabel}" category?`)) {
-      const updatedCategories = categories.filter(cat => cat.id !== categoryId);
-      onUpdateCategories(updatedCategories);
-      showNotification('success', `${categoryLabel} category deleted successfully!`);
-    }
-  };
-
   const toggleReorderMode = () => {
     setIsReorderMode(!isReorderMode);
     if (!isReorderMode && filterCategory === 'all') {
       setFilterCategory('sales'); // Switch to a specific category for reordering
     }
   };
-
-  const renderCategoryForm = (category: Partial<Category>, isEditing = false) => {
-    const currentCategory = isEditing ? editingCategory : newCategory;
-    const updateCategory = isEditing ? setEditingCategory : setNewCategory;
-
-    return (
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Category Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              value={currentCategory?.label || ''}
-              onChange={(e) => updateCategory({ ...currentCategory, label: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="e.g., Operations"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
-            <select
-              value={currentCategory?.icon || 'TrendingUp'}
-              onChange={(e) => updateCategory({ ...currentCategory, icon: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              {availableIcons.map(iconName => (
-                <option key={iconName} value={iconName}>{iconName}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Color Theme</label>
-          <div className="grid grid-cols-4 gap-2">
-            {colorOptions.map(color => {
-              const IconComponent = iconMap[currentCategory?.icon || 'TrendingUp'];
-              return (
-                <button
-                  key={color.value}
-                  type="button"
-                  onClick={() => updateCategory({ ...currentCategory, color: color.value })}
-                  className={`p-3 border rounded-lg flex flex-col items-center space-y-1 transition-colors ${
-                    currentCategory?.color === color.value
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-300 hover:border-gray-400'
-                  }`}
-                >
-                  <IconComponent className={`w-4 h-4 ${color.value}`} />
-                  <span className="text-xs text-gray-600">{color.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <h4 className="font-medium text-gray-800 mb-2">Preview</h4>
-          <div className="flex items-center space-x-3 p-3 bg-white border border-gray-200 rounded-lg">
-            {currentCategory?.icon && iconMap[currentCategory.icon] && (
-              React.createElement(iconMap[currentCategory.icon], {
-                className: `w-5 h-5 ${currentCategory.color}`
-              })
-            )}
-            <span className="font-medium">{currentCategory?.label || 'Category Name'}</span>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message });
     setTimeout(() => setNotification(null), 4000);
@@ -658,20 +497,273 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-black">Agent Management</h2>
-          <p className="text-gray-600 mt-1">Add, edit, and manage AI agents in your showcase</p>
+          <h2 className="text-2xl font-bold text-black">Platform Administration</h2>
+          <p className="text-gray-600 mt-1">Manage agents, categories, and platform configuration</p>
         </div>
-        <button
-          onClick={() => setIsAddingAgent(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Add New Agent</span>
-        </button>
+        <div className="flex space-x-2">
+          {managementTab === 'agents' && (
+            <button
+              onClick={() => setIsAddingAgent(true)}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Add Agent</span>
+            </button>
+          )}
+          {managementTab === 'categories' && (
+            <button
+              onClick={() => setIsAddingCategory(true)}
+              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Add Category</span>
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* Search and Filter Controls */}
-      <div className="bg-white rounded-2xl p-4 shadow-md border border-gray-100">
+      {/* Management Tabs */}
+      <div className="bg-white rounded-2xl shadow-md border border-gray-100">
+        <div className="flex border-b border-gray-200">
+          <button
+            onClick={() => setManagementTab('agents')}
+            className={`px-6 py-4 font-medium transition-colors ${
+              managementTab === 'agents'
+                ? 'text-blue-600 border-b-2 border-blue-600'
+                : 'text-gray-600 hover:text-gray-800'
+            }`}
+          >
+            Agent Management ({agents.length})
+          </button>
+          <button
+            onClick={() => setManagementTab('categories')}
+            className={`px-6 py-4 font-medium transition-colors ${
+              managementTab === 'categories'
+                ? 'text-green-600 border-b-2 border-green-600'
+                : 'text-gray-600 hover:text-gray-800'
+            }`}
+          >
+            Category Management ({categories.length})
+          </button>
+        </div>
+      </div>
+
+      {/* Category Management Tab */}
+      {managementTab === 'categories' && (
+        <>
+          {/* Category Controls */}
+          <div className="bg-white rounded-2xl p-4 shadow-md border border-gray-100">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="font-semibold text-black">Sidebar Categories</h3>
+                <p className="text-sm text-gray-600">Manage the category tabs shown in the left sidebar</p>
+              </div>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => setIsCategoryReorderMode(!isCategoryReorderMode)}
+                  className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
+                    isCategoryReorderMode 
+                      ? 'bg-green-600 text-white' 
+                      : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
+                  }`}
+                >
+                  {isCategoryReorderMode ? 'Exit Reorder' : 'Reorder Categories'}
+                </button>
+              </div>
+            </div>
+            
+            {isCategoryReorderMode && (
+              <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-sm text-green-800">
+                  <strong>Reorder Mode:</strong> Drag and drop categories to change their order in the sidebar
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Add New Category Form */}
+          {isAddingCategory && (
+            <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-semibold text-black">Add New Category</h3>
+                <button
+                  onClick={() => {
+                    setIsAddingCategory(false);
+                    setNewCategory({
+                      label: '',
+                      icon: 'TrendingUp',
+                      color: 'text-blue-600'
+                    });
+                  }}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {renderCategoryForm(newCategory)}
+
+              <div className="flex justify-end space-x-3 mt-6">
+                <button
+                  onClick={() => {
+                    setIsAddingCategory(false);
+                    setNewCategory({
+                      label: '',
+                      icon: 'TrendingUp',
+                      color: 'text-blue-600'
+                    });
+                  }}
+                  className="bg-white border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleAddCategory}
+                  disabled={saving}
+                  className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2 disabled:opacity-50"
+                >
+                  {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                  <span>{saving ? 'Adding...' : 'Add Category'}</span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Edit Category Modal */}
+          {editingCategory && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+                <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                  <h3 className="text-lg font-semibold text-black">Edit Category: {editingCategory.label}</h3>
+                  <button
+                    onClick={() => setEditingCategory(null)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+                  {renderCategoryForm(editingCategory, true)}
+                </div>
+
+                <div className="flex justify-end space-x-3 p-6 border-t border-gray-200">
+                  <button
+                    onClick={() => setEditingCategory(null)}
+                    className="bg-white border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleEditCategory}
+                    disabled={saving}
+                    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2 disabled:opacity-50"
+                  >
+                    {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                    <span>{saving ? 'Saving...' : 'Save Changes'}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Categories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {categories.map((category, index) => {
+              const IconComponent = iconMap[category.icon] || iconMap.TrendingUp;
+              const agentCount = agents.filter(agent => agent.category === category.id).length;
+              
+              return (
+                <div
+                  key={category.id}
+                  className={`bg-white rounded-2xl p-6 shadow-md border transition-all ${
+                    isCategoryReorderMode
+                      ? 'border-green-200 hover:border-green-400 cursor-move hover:shadow-lg'
+                      : 'border-gray-100 hover:shadow-lg'
+                  } ${
+                    dragOverIndex === index ? 'border-green-500 bg-green-50 scale-105' : ''
+                  } ${
+                    draggedCategory === category.id ? 'opacity-50 scale-95' : ''
+                  }`}
+                  draggable={isCategoryReorderMode}
+                  onDragStart={(e) => handleCategoryDragStart(e, category.id)}
+                  onDragOver={(e) => handleDragOver(e, index)}
+                  onDragLeave={handleDragLeave}
+                  onDrop={(e) => handleCategoryDrop(e, index)}
+                >
+                  {/* Drag Handle */}
+                  {isCategoryReorderMode && (
+                    <div className="flex items-center justify-center mb-3 text-gray-400">
+                      <GripVertical className="w-5 h-5" />
+                    </div>
+                  )}
+                  
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div className={`p-2 rounded-lg ${category.color.replace('text-', 'bg-').replace('-600', '-100')}`}>
+                        <IconComponent className={`w-5 h-5 ${category.color}`} />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-black">{category.label}</h4>
+                        <p className="text-sm text-gray-600">{agentCount} agents</p>
+                      </div>
+                    </div>
+                    
+                    {!isCategoryReorderMode && (
+                      <button
+                        onClick={() => handleDeleteCategory(category.id, category.label)}
+                        className="p-1 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                        title="Delete Category"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="text-sm text-gray-600 mb-4">
+                    <div className="flex justify-between">
+                      <span>Icon:</span>
+                      <span className="font-medium">{category.icon}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Color:</span>
+                      <span className={`font-medium ${category.color}`}>
+                        {colorOptions.find(c => c.value === category.color)?.label}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Position indicator in reorder mode */}
+                  {isCategoryReorderMode && (
+                    <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-center">
+                      <p className="text-sm text-green-800 font-medium">
+                        Position #{index + 1}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Actions */}
+                  {!isCategoryReorderMode && (
+                    <button
+                      onClick={() => setEditingCategory(category)}
+                      className="w-full bg-white border border-gray-300 text-black py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center space-x-1"
+                    >
+                      <Edit className="w-4 h-4" />
+                      <span>Edit Category</span>
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      {/* Agent Management Tab */}
+      {managementTab === 'agents' && (
+        <>
+          {/* Search and Filter Controls */}
+          <div className="bg-white rounded-2xl p-4 shadow-md border border-gray-100">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="relative">
             <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -754,10 +846,10 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
             <span>Optional: {agents.filter(a => a.status === 'optional').length}</span>
           </div>
         </div>
-      </div>
+          </div>
 
-      {/* Add New Agent Form */}
-      {isAddingAgent && (
+          {/* Add New Agent Form */}
+          {isAddingAgent && (
         <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold text-black">Add New Agent</h3>
@@ -794,10 +886,10 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
             </button>
           </div>
         </div>
-      )}
+          )}
 
-      {/* Edit Agent Modal */}
-      {editingAgent && (
+          {/* Edit Agent Modal */}
+          {editingAgent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
@@ -838,12 +930,12 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
             </div>
           </div>
         </div>
-      )}
+          )}
 
-      {/* Agents Management Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          {/* Agents Management Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredAgents.map((agent, index) => (
-          <div
+          <div 
             key={agent.id}
             className={`bg-white rounded-2xl p-6 shadow-md border transition-all ${
               isReorderMode && filterCategory !== 'all'
@@ -984,10 +1076,10 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
             )}
           </div>
         ))}
-      </div>
+          </div>
 
-      {/* Empty State */}
-      {filteredAgents.length === 0 && !loading && (
+          {/* Empty State */}
+          {filteredAgents.length === 0 && !loading && (
         <div className="text-center py-12">
           <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100">
             {searchTerm || filterCategory !== 'all' || filterStatus !== 'all' ? (
@@ -1021,10 +1113,10 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
             )}
           </div>
         </div>
-      )}
+          )}
 
-      {/* Summary Stats */}
-      {agents.length > 0 && (
+          {/* Summary Stats */}
+          {agents.length > 0 && (
         <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
           <h3 className="text-lg font-semibold text-black mb-4">Agent Overview</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -1042,6 +1134,8 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
             })}
           </div>
         </div>
+          )}
+        </>
       )}
     </div>
   );
