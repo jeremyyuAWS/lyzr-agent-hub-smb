@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { TrendingUp, Users, Headphones, UserCheck, DollarSign, Megaphone } from 'lucide-react';
+import { 
+  TrendingUp, Users, Headphones, UserCheck, DollarSign, Megaphone,
+  Bot, Building, FileText, Globe, Shield, Zap, RotateCcw
+} from 'lucide-react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import AgentGallery from './pages/AgentGallery';
@@ -26,7 +29,14 @@ const iconMap = {
   Headphones,
   UserCheck,
   DollarSign,
-  Megaphone
+  Megaphone,
+  Bot,
+  Building,
+  FileText,
+  Globe,
+  Shield,
+  Zap,
+  RotateCcw
 };
 
 function App() {
