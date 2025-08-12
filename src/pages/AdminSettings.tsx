@@ -707,7 +707,10 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
             >
               {isReorderMode ? 'Save Order & Exit' : 'Reorder Agents'}
             </button>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
+            <button 
+              onClick={handleAddAgent}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+            >
               <Plus className="w-4 h-4" />
               <span>Add Agent</span>
             </button>
