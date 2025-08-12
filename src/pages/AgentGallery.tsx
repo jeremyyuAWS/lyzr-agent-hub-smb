@@ -289,6 +289,21 @@ const AgentGallery: React.FC<AgentGalleryProps> = ({ category, refreshKey }) => 
 
             <p className="text-sm text-gray-700 mb-4 leading-relaxed">{agent.description}</p>
 
+            {/* Demo URL for live agents */}
+            {agent.status === 'live' && agent.demo_url && (
+              <div className="mb-4">
+                <a
+                  href={agent.demo_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-1 text-xs text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  <span className="max-w-[200px] truncate">{agent.demo_url}</span>
+                </a>
+              </div>
+            )}
+
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-4">
               {agent.tags.map((tag, index) => (
