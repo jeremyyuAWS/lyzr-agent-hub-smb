@@ -5,6 +5,10 @@ import { agentsApi, Agent } from '../lib/supabase';
 const AdminSettings: React.FC = () => {
   const [agents, setAgents] = useState<Agent[]>([]);
   const [filteredAgents, setFilteredAgents] = useState<Agent[]>([]);
+  const [customOrder, setCustomOrder] = useState<Record<string, string[]>>({});
+  const [isReorderMode, setIsReorderMode] = useState(false);
+  const [draggedAgent, setDraggedAgent] = useState<string | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAddingAgent, setIsAddingAgent] = useState(false);
   const [editingAgent, setEditingAgent] = useState<Agent | null>(null);
@@ -39,6 +43,7 @@ const AdminSettings: React.FC = () => {
 
   useEffect(() => {
     loadAgents();
+    loadCustomOrder();
   }, []);
 
   useEffect(() => {
@@ -60,8 +65,23 @@ const AdminSettings: React.FC = () => {
       filtered = filtered.filter(agent => agent.status === filterStatus);
     }
 
+    // Apply custom ordering if available and in reorder mode
+    if (isReorderMode && filterCategory !== 'all' && customOrder[filterCategory]) {
+      const orderMap = customOrder[filterCategory];
+      filtered.sort((a, b) => {
+        const indexA = orderMap.indexOf(a.id);
+        const indexB = orderMap.indexOf(b.id);
+        if (indexA === -1 && indexB === -1) return a.name.localeCompare(b.name);
+        if (indexA === -1) return 1;
+        if (indexB === -1) return -1;
+        return indexA - indexB;
+      });
+    } else {
+      // Default alphabetical sorting
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
+    }
     setFilteredAgents(filtered);
-  }, [agents, searchTerm, filterCategory, filterStatus]);
+  }, [agents, searchTerm, filterCategory, filterStatus, isReorderMode, customOrder]);
 
   const loadAgents = async () => {
     setLoading(true);
@@ -70,6 +90,78 @@ const AdminSettings: React.FC = () => {
     setLoading(false);
   };
 
+  const loadCustomOrder = () => {
+    const savedOrder = localStorage.getItem('agentCustomOrder');
+    if (savedOrder) {
+      setCustomOrder(JSON.parse(savedOrder));
+    }
+  };
+
+  const saveCustomOrder = (newOrder: Record<string, string[]>) => {
+    setCustomOrder(newOrder);
+    localStorage.setItem('agentCustomOrder', JSON.stringify(newOrder));
+  };
+
+  const handleDragStart = (e: React.DragEvent, agentId: string) => {
+    setDraggedAgent(agentId);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', agentId);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setDragOverIndex(index);
+  };
+
+  const handleDragLeave = () => {
+    setDragOverIndex(null);
+  };
+
+  const handleDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault();
+    
+    if (!draggedAgent || filterCategory === 'all') return;
+    
+    const categoryAgents = filteredAgents.map(agent => agent.id);
+    const draggedIndex = categoryAgents.indexOf(draggedAgent);
+    
+    if (draggedIndex === -1) return;
+    
+    // Reorder the array
+    const newOrder = [...categoryAgents];
+    const [removed] = newOrder.splice(draggedIndex, 1);
+    newOrder.splice(dropIndex, 0, removed);
+    
+    // Update custom order
+    const updatedCustomOrder = {
+      ...customOrder,
+      [filterCategory]: newOrder
+    };
+    
+    saveCustomOrder(updatedCustomOrder);
+    setDraggedAgent(null);
+    setDragOverIndex(null);
+    
+    showNotification('success', 'Agent order updated successfully!');
+  };
+
+  const resetToAlphabetical = () => {
+    if (filterCategory === 'all') return;
+    
+    const updatedCustomOrder = { ...customOrder };
+    delete updatedCustomOrder[filterCategory];
+    saveCustomOrder(updatedCustomOrder);
+    
+    showNotification('success', 'Reset to alphabetical order!');
+  };
+
+  const toggleReorderMode = () => {
+    setIsReorderMode(!isReorderMode);
+    if (!isReorderMode && filterCategory === 'all') {
+      setFilterCategory('sales'); // Switch to a specific category for reordering
+    }
+  };
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message });
     setTimeout(() => setNotification(null), 4000);
@@ -427,8 +519,47 @@ const AdminSettings: React.FC = () => {
           </select>
         </div>
         
-        <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
-          <span>Showing {filteredAgents.length} of {agents.length} agents</span>
+        <div className="mt-4 flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={toggleReorderMode}
+              disabled={filterCategory === 'all'}
+              className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
+                isReorderMode 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
+              } ${filterCategory === 'all' ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              {isReorderMode ? 'Exit Reorder' : 'Reorder Agents'}
+            </button>
+            
+            {isReorderMode && filterCategory !== 'all' && customOrder[filterCategory] && (
+              <button
+                onClick={resetToAlphabetical}
+                className="px-3 py-1 bg-white border border-gray-300 text-black rounded-lg hover:bg-gray-50 transition-colors text-sm"
+              >
+                Reset to Alphabetical
+              </button>
+            )}
+          </div>
+          
+          <div className="text-sm text-gray-600">
+            <span>Showing {filteredAgents.length} of {agents.length} agents</span>
+          </div>
+        </div>
+        
+        {isReorderMode && (
+          <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-800">
+              <strong>Reorder Mode:</strong> {filterCategory === 'all' 
+                ? 'Select a specific category to reorder agents' 
+                : 'Drag and drop agents to reorder them within this category'}
+            </p>
+          </div>
+        )}
+        
+        <div className="mt-2 flex items-center justify-between text-sm text-gray-600">
+          <span></span>
           <div className="flex items-center space-x-4">
             <span>Live: {agents.filter(a => a.status === 'live').length}</span>
             <span>Coming Soon: {agents.filter(a => a.status === 'coming_soon').length}</span>
@@ -526,7 +657,34 @@ const AdminSettings: React.FC = () => {
         {filteredAgents.map((agent) => (
           <div key={agent.id} className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
             <div className="flex items-start justify-between mb-4">
-              <div className="flex-1">
+            className={`bg-white rounded-2xl p-6 shadow-md border transition-all ${
+              isReorderMode && filterCategory !== 'all'
+                ? 'border-blue-200 hover:border-blue-400 cursor-move hover:shadow-lg'
+                : 'border-gray-100 hover:shadow-lg'
+            } ${
+              dragOverIndex === index ? 'border-blue-500 bg-blue-50 scale-105' : ''
+            } ${
+              draggedAgent === agent.id ? 'opacity-50 scale-95' : ''
+            }`}
+            draggable={isReorderMode && filterCategory !== 'all'}
+            onDragStart={(e) => handleDragStart(e, agent.id)}
+            onDragOver={(e) => handleDragOver(e, index)}
+            {/* Drag Handle */}
+            {isReorderMode && filterCategory !== 'all' && (
+              <div className="flex items-center justify-center mb-2 text-gray-400">
+                <div className="flex space-x-1">
+                  <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                  <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                  <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                  <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                  <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                  <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                </div>
+              </div>
+            )}
+            
+            onDragLeave={handleDragLeave}
+            onDrop={(e) => handleDrop(e, index)}
                 <div className="flex items-center space-x-2 mb-2">
                   <h4 className="font-semibold text-black text-lg">{agent.name}</h4>
                 </div>
@@ -538,17 +696,24 @@ const AdminSettings: React.FC = () => {
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(agent.status)}`}>
                     {statusOptions.find(s => s.id === agent.status)?.label}
                   </span>
+                  {isReorderMode && filterCategory !== 'all' && (
+                    <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                      #{index + 1}
+                    </span>
+                  )}
                 </div>
               </div>
 
               <div className="flex items-center space-x-1 ml-2">
-                <button
-                  onClick={() => handleDeleteAgent(agent.id, agent.name)}
-                  className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                  title="Delete Agent"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+                {!isReorderMode && (
+                  <button
+                    onClick={() => handleDeleteAgent(agent.id, agent.name)}
+                    className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Delete Agent"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
               </div>
             </div>
 
@@ -596,25 +761,36 @@ const AdminSettings: React.FC = () => {
             </div>
 
             {/* Quick Actions */}
-            <div className="flex space-x-2 mt-4">
-              <button
-                onClick={() => setEditingAgent(agent)}
-                className="flex-1 bg-white border border-gray-300 text-black py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center space-x-1"
-              >
-                <Edit className="w-4 h-4" />
-                <span>Edit</span>
-              </button>
-              
-              {agent.demo_url && (
+            {!isReorderMode && (
+              <div className="flex space-x-2 mt-4">
                 <button
-                  onClick={() => window.open(agent.demo_url!, '_blank')}
-                  className="flex-1 bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm flex items-center justify-center space-x-1"
+                  onClick={() => setEditingAgent(agent)}
+                  className="flex-1 bg-white border border-gray-300 text-black py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center space-x-1"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Demo</span>
+                  <Edit className="w-4 h-4" />
+                  <span>Edit</span>
                 </button>
-              )}
-            </div>
+              
+                {agent.demo_url && (
+                  <button
+                    onClick={() => window.open(agent.demo_url!, '_blank')}
+                    className="flex-1 bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm flex items-center justify-center space-x-1"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Demo</span>
+                  </button>
+                )}
+              </div>
+            )}
+            
+            {/* Reorder Mode Instructions */}
+            {isReorderMode && filterCategory !== 'all' && (
+              <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-center">
+                <p className="text-sm text-blue-800 font-medium">
+                  Drag to reorder • Position #{index + 1}
+                </p>
+              </div>
+            )}
           </div>
         ))}
       </div>
