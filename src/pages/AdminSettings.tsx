@@ -410,10 +410,12 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedCategory === 'all' 
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
+                  : isReorderMode
+                    ? 'bg-green-600 text-white hover:bg-green-700'
+                    : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
               }`}
             >
-              {isReorderMode ? 'Exit Reorder' : 'Reorder Agents'}
+              {isReorderMode ? 'Save Order & Exit' : 'Reorder Agents'}
             </button>
             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
               <Plus className="w-4 h-4" />
@@ -438,6 +440,16 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
           {selectedCategory === 'all' && (
             <p className="text-sm text-gray-500 mt-1">
               Select a specific category to enable agent reordering
+            </p>
+          )}
+          {selectedCategory !== 'all' && !isReorderMode && (
+            <p className="text-sm text-blue-600 mt-1">
+              💡 Click "Reorder Agents" to customize the order agents appear in the {categories.find(c => c.id === selectedCategory)?.label} gallery
+            </p>
+          )}
+          {isReorderMode && (
+            <p className="text-sm text-green-600 mt-1">
+              🔄 Reorder mode active - drag agents to change their display order, then click "Save Order & Exit"
             </p>
           )}
         </div>
