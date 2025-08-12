@@ -40,7 +40,7 @@ const iconMap = {
 };
 
 function App() {
-  const [activeCategory, setActiveCategory] = useState('sales');
+  const [activeCategory, setActiveCategory] = useState('all');
   const [activeTab, setActiveTab] = useState('agents');
   const [agentRefreshKey, setAgentRefreshKey] = useState(0);
   const [categories, setCategories] = useState<Category[]>(() => {
