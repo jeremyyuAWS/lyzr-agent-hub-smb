@@ -184,17 +184,7 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
   };
 
   const toggleReorderMode = () => {
-    if (!isReorderMode) {
-      // Entering reorder mode
-      if (filterCategory === 'all') {
-        const firstCategory = categories[0]?.id || 'sales';
-        setFilterCategory(firstCategory);
-      }
-      setIsReorderMode(true);
-    } else {
-      // Exiting reorder mode
-      setIsReorderMode(false);
-    }
+    setIsReorderMode(!isReorderMode);
   };
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message });
@@ -810,10 +800,13 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleReorderMode}
+              disabled={filterCategory === 'all'}
               className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                 isReorderMode 
                   ? 'bg-blue-600 text-white' 
-                  : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
+                  : filterCategory === 'all'
+                    ? 'bg-gray-100 border border-gray-300 text-gray-400 cursor-not-allowed'
+                    : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
               }`}
             >
               {isReorderMode ? 'Exit Reorder' : 'Reorder Agents'}
@@ -828,9 +821,9 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
               </button>
             )}
             
-            {filterCategory === 'all' && !isReorderMode && (
+            {filterCategory === 'all' && (
               <p className="text-sm text-gray-500 italic">
-                Select a category to enable reordering
+                Select a specific category to enable agent reordering
               </p>
             )}
           </div>
