@@ -184,7 +184,89 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
   };
 
   const toggleReorderMode = () => {
-    setIsReorderMode(!isReorderMode);
+    const newReorderMode = !isReorderMode;
+    setIsReorderMode(newReorderMode);
+    
+    // If exiting reorder mode, refresh the filtered agents to apply the new order
+    if (!newReorderMode) {
+      // Force re-render of filtered agents with new order
+      const filtered = agents.filter(agent => {
+        let matches = true;
+        
+        if (searchTerm) {
+          matches = matches && (
+            agent.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            agent.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            agent.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+          );
+        }
+        
+        if (filterCategory !== 'all') {
+          matches = matches && agent.category === filterCategory;
+        }
+        
+        if (filterStatus !== 'all') {
+          matches = matches && agent.status === filterStatus;
+        }
+        
+        return matches;
+      });
+      
+      // Apply custom ordering if available
+      if (filterCategory !== 'all' && customOrder[filterCategory]) {
+        const orderMap = customOrder[filterCategory];
+        filtered.sort((a, b) => {
+          const indexA = orderMap.indexOf(a.id);
+          const indexB = orderMap.indexOf(b.id);
+          if (indexA === -1 && indexB === -1) return a.name.localeCompare(b.name);
+          if (indexA === -1) return 1;
+          if (indexB === -1) return -1;
+          return indexA - indexB;
+        });
+      } else {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
+      
+      setFilteredAgents(filtered);
+      showNotification('success', 'Agent order saved successfully!');
+    }
+  };
+
+  // Category drag and drop handlers
+  const handleCategoryDragStart = (e: React.DragEvent, categoryId: string) => {
+    setDraggedCategory(categoryId);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', categoryId);
+  };
+
+  const handleCategoryDrop = (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault();
+    
+    if (!draggedCategory) return;
+    
+    const categoryIds = categories.map(cat => cat.id);
+    const draggedIndex = categoryIds.indexOf(draggedCategory);
+    
+    if (draggedIndex === -1) return;
+    
+    // Reorder the categories array
+    const newCategories = [...categories];
+    const [removed] = newCategories.splice(draggedIndex, 1);
+    newCategories.splice(dropIndex, 0, removed);
+    
+    // Update categories
+    onUpdateCategories(newCategories);
+    setDraggedCategory(null);
+    setDragOverIndex(null);
+    
+    showNotification('success', 'Category order updated successfully!');
+  };
+
+  const toggleCategoryReorderMode = () => {
+    setIsCategoryReorderMode(!isCategoryReorderMode);
+    if (isCategoryReorderMode) {
+      showNotification('success', 'Category reordering saved!');
+    }
   };
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message });
