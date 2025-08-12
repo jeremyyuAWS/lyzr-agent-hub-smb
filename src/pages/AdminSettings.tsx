@@ -44,10 +44,11 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
     name: '',
     description: '',
     category: 'sales',
-    tags: '',
+    tags: [] as string[],
     demo_url: '',
     status: 'coming_soon'
   });
+  const [currentTag, setCurrentTag] = useState('');
 
   // Available icons for selection
   const availableIcons = [
@@ -126,11 +127,12 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
       name: '',
       description: '',
       category: selectedCategory !== 'all' ? selectedCategory : 'sales',
-      tags: '',
+      tags: [],
       demo_url: '',
       status: 'coming_soon'
     });
     setEditingAgent(null);
+    setCurrentTag('');
   };
 
   const handleAddCategory = () => {
@@ -163,7 +165,7 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
       name: agent.name,
       description: agent.description,
       category: agent.category,
-      tags: agent.tags.join(', '),
+      tags: agent.tags,
       demo_url: agent.demo_url || '',
       status: agent.status
     });
@@ -244,7 +246,7 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
       name: agentForm.name.trim(),
       description: agentForm.description.trim(),
       category: agentForm.category as 'sales' | 'marketing' | 'customer-service' | 'hr' | 'finance',
-      tags: agentForm.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0),
+      tags: agentForm.tags,
       demo_url: agentForm.demo_url.trim() || null,
       status: agentForm.status as 'live' | 'coming_soon' | 'optional'
     };
@@ -365,6 +367,31 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
       case 'coming_soon': return 'Coming Soon';
       case 'optional': return 'Optional';
       default: return status;
+    }
+  };
+
+  const handleAddTag = () => {
+    const tag = currentTag.trim();
+    if (tag && !agentForm.tags.includes(tag)) {
+      setAgentForm(prev => ({
+        ...prev,
+        tags: [...prev.tags, tag]
+      }));
+      setCurrentTag('');
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove: string) => {
+    setAgentForm(prev => ({
+      ...prev,
+      tags: prev.tags.filter(tag => tag !== tagToRemove)
+    }));
+  };
+
+  const handleTagKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddTag();
     }
   };
 
@@ -542,13 +569,51 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Tags
               </label>
-              <input
-                type="text"
-                value={agentForm.tags}
-                onChange={(e) => setAgentForm(prev => ({ ...prev, tags: e.target.value }))}
-                placeholder="automation, customer service, AI (comma separated)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="space-y-2">
+                {/* Tag Input */}
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    value={currentTag}
+                    onChange={(e) => setCurrentTag(e.target.value)}
+                    onKeyPress={handleTagKeyPress}
+                    placeholder="Type a tag and press Enter"
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleAddTag}
+                    className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Add
+                  </button>
+                </div>
+                
+                {/* Tag List */}
+                {agentForm.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                    {agentForm.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 text-sm rounded-full"
+                      >
+                        {tag}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveTag(tag)}
+                          className="ml-1 text-blue-600 hover:text-blue-800"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+                
+                <p className="text-xs text-gray-500">
+                  Type a tag and press Enter or click Add. Click the X to remove tags.
+                </p>
+              </div>
             </div>
 
             {/* Demo URL */}
