@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Settings, Plus, Edit, Trash2, Save, X, GripVertical, 
   TrendingUp, Users, Headphones, UserCheck, DollarSign, Megaphone,
-  Bot, Building, FileText, Globe, Shield, Zap, RotateCcw
+  Bot, Building, FileText, Globe, Shield, Zap, RotateCcw, ExternalLink
 } from 'lucide-react';
 import { agentsApi, Agent } from '../lib/supabase';
 
@@ -867,6 +867,20 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({
                     </span>
                   </div>
                   <p className="text-sm text-gray-600 line-clamp-1">{agent.description}</p>
+                  {agent.status === 'live' && agent.demo_url && (
+                    <div className="mt-1">
+                      <a
+                        href={agent.demo_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-1 text-xs text-blue-600 hover:text-blue-800 hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        <span className="max-w-[200px] truncate">{agent.demo_url}</span>
+                      </a>
+                    </div>
+                  )}
                   {agent.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-2">
                       {agent.tags.slice(0, 3).map((tag, tagIndex) => (
