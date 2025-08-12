@@ -4,22 +4,53 @@ import { agentsApi, Agent } from '../lib/supabase';
 
 interface AgentGalleryProps {
   category: string;
+  refreshKey?: number; // Add refresh key to force re-render
 }
 
-const AgentGallery: React.FC<AgentGalleryProps> = ({ category }) => {
+const AgentGallery: React.FC<AgentGalleryProps> = ({ category, refreshKey }) => {
   const [agents, setAgents] = useState<Agent[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     loadAgents();
-  }, [category]);
+  }, [category, refreshKey]); // Add refreshKey as dependency
 
   const loadAgents = async () => {
     setLoading(true);
     const data = await agentsApi.getAgentsByCategory(category);
-    setAgents(data);
+    
+    // Apply custom ordering if it exists
+    const orderedAgents = getCustomAgentOrder(data, category);
+    setAgents(orderedAgents);
     setLoading(false);
+  };
+
+  const getCustomAgentOrder = (agents: Agent[], category: string): Agent[] => {
+    const savedOrders = localStorage.getItem('agentOrders');
+    if (!savedOrders) return agents;
+    
+    try {
+      const orders = JSON.parse(savedOrders);
+      const customOrder = orders[category];
+      if (!customOrder || !Array.isArray(customOrder)) return agents;
+      
+      const orderedAgents = [];
+      // First add agents in the custom order
+      for (const agentId of customOrder) {
+        const agent = agents.find(a => a.id === agentId);
+        if (agent) orderedAgents.push(agent);
+      }
+      // Then add any new agents not in the custom order
+      for (const agent of agents) {
+        if (!customOrder.includes(agent.id)) {
+          orderedAgents.push(agent);
+        }
+      }
+      return orderedAgents;
+    } catch {
+      return agents;
+    }
   };
 
   const filteredAgents = agents.filter(agent => 

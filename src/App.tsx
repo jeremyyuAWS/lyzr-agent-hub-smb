@@ -32,6 +32,7 @@ const iconMap = {
 function App() {
   const [activeCategory, setActiveCategory] = useState('sales');
   const [activeTab, setActiveTab] = useState('agents');
+  const [agentRefreshKey, setAgentRefreshKey] = useState(0);
   const [categories, setCategories] = useState<Category[]>(() => {
     const saved = localStorage.getItem('sidebarCategories');
     return saved ? JSON.parse(saved) : defaultCategories;
@@ -46,9 +47,17 @@ function App() {
     }
   };
 
+  const handleTabChange = (newTab: string) => {
+    setActiveTab(newTab);
+    // Force refresh of agent gallery when switching to agents tab
+    if (newTab === 'agents') {
+      setAgentRefreshKey(prev => prev + 1);
+    }
+  };
+
   const getCurrentPage = () => {
     switch (activeTab) {
-      case 'agents': return <AgentGallery category={activeCategory} />;
+      case 'agents': return <AgentGallery category={activeCategory} refreshKey={agentRefreshKey} />;
       case 'admin': return (
         <AdminSettings 
           categories={categories}
@@ -56,7 +65,7 @@ function App() {
           iconMap={iconMap}
         />
       );
-      default: return <AgentGallery category={activeCategory} />;
+      default: return <AgentGallery category={activeCategory} refreshKey={agentRefreshKey} />;
     }
   };
 
@@ -72,7 +81,7 @@ function App() {
           activeCategory={activeCategory} 
           onCategoryChange={setActiveCategory}
           activeTab={activeTab}
-          onTabChange={setActiveTab}
+          onTabChange={handleTabChange}
           categories={categories}
           iconMap={iconMap}
         />
@@ -80,7 +89,7 @@ function App() {
         <div className="flex-1">
           <Header 
             title={getPageTitle()}
-            onAdminClick={() => setActiveTab('admin')}
+            onAdminClick={() => handleTabChange('admin')}
           />
           
           <main className="p-6">
