@@ -257,6 +257,44 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
     // Update categories
     onUpdateCategories(newCategories);
     setDraggedCategory(null);
+  const handleAddCategory = async () => {
+    if (!newCategory.label?.trim()) {
+      showNotification('error', 'Category name is required');
+      return;
+    }
+
+    // Check for duplicate names
+    const duplicate = categories.find(cat => 
+      cat.label.toLowerCase() === newCategory.label!.trim().toLowerCase()
+    );
+    
+    if (duplicate) {
+      showNotification('error', 'A category with this name already exists');
+      return;
+    }
+
+    setSaving(true);
+    
+    const categoryToAdd: Category = {
+      id: newCategory.label!.trim().toLowerCase().replace(/\s+/g, '-'),
+      label: newCategory.label!.trim(),
+      icon: newCategory.icon || 'TrendingUp',
+      color: newCategory.color || 'text-blue-600'
+    };
+    
+    const updatedCategories = [...categories, categoryToAdd];
+    onUpdateCategories(updatedCategories);
+    
+    showNotification('success', `${categoryToAdd.label} added successfully!`);
+    setNewCategory({
+      label: '',
+      icon: 'TrendingUp',
+      color: 'text-blue-600'
+    });
+    setIsAddingCategory(false);
+    setSaving(false);
+  };
+
     setDragOverIndex(null);
     
     showNotification('success', 'Category order updated successfully!');
@@ -271,6 +309,77 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message });
     setTimeout(() => setNotification(null), 4000);
+  };
+
+  const renderCategoryForm = (category: Partial<Category>, isEditing = false) => {
+    const currentCategory = isEditing ? editingCategory : newCategory;
+    const updateCategory = isEditing ? setEditingCategory : setNewCategory;
+
+    return (
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Category Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            value={currentCategory?.label || ''}
+            onChange={(e) => updateCategory({ ...currentCategory, label: e.target.value })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="e.g., Legal & Compliance"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Icon</label>
+            <select
+              value={currentCategory?.icon || 'TrendingUp'}
+              onChange={(e) => updateCategory({ ...currentCategory, icon: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {availableIcons.map(iconName => {
+                const IconComponent = iconMap[iconName];
+                return (
+                  <option key={iconName} value={iconName}>{iconName}</option>
+                );
+              })}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Color Theme</label>
+            <select
+              value={currentCategory?.color || 'text-blue-600'}
+              onChange={(e) => updateCategory({ ...currentCategory, color: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {colorOptions.map(colorOption => (
+                <option key={colorOption.value} value={colorOption.value}>
+                  {colorOption.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Live Preview */}
+        {currentCategory?.label && (
+          <div className="bg-gray-50 rounded-lg p-4">
+            <h4 className="text-sm font-medium text-gray-800 mb-3">Preview in Sidebar:</h4>
+            <div className="bg-white rounded-lg p-3 border border-gray-200 max-w-xs">
+              <div className="flex items-center space-x-3">
+                {(() => {
+                  const IconComponent = iconMap[currentCategory.icon || 'TrendingUp'];
+                  return <IconComponent className={`w-5 h-5 ${currentCategory.color || 'text-blue-600'}`} />;
+                })()}
+                <span className="font-medium text-black">{currentCategory.label}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   };
 
   const resetForm = () => {
