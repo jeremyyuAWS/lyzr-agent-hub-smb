@@ -1,23 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit, Trash2, ExternalLink, Save, X, Loader2, AlertCircle, CheckCircle, Search, Filter, Tag, Eye } from 'lucide-react';
+import { Plus, Edit, Trash2, ExternalLink, Save, X, Loader2, AlertCircle, CheckCircle, Search, Filter, Tag, Eye, ArrowUp, ArrowDown, GripVertical, Palette, Type } from 'lucide-react';
 import { agentsApi, Agent } from '../lib/supabase';
 
-const AdminSettings: React.FC = () => {
+interface Category {
+  id: string;
+  label: string;
+  icon: string;
+  color: string;
+}
+
+interface AdminSettingsProps {
+  categories: Category[];
+  onUpdateCategories: (categories: Category[]) => void;
+  iconMap: Record<string, React.ComponentType<{ className?: string }>>;
+}
+
+const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCategories, iconMap }) => {
   const [agents, setAgents] = useState<Agent[]>([]);
   const [filteredAgents, setFilteredAgents] = useState<Agent[]>([]);
+  const [managementTab, setManagementTab] = useState<'agents' | 'categories'>('agents');
   const [customOrder, setCustomOrder] = useState<Record<string, string[]>>({});
   const [isReorderMode, setIsReorderMode] = useState(false);
+  const [isCategoryReorderMode, setIsCategoryReorderMode] = useState(false);
   const [draggedAgent, setDraggedAgent] = useState<string | null>(null);
+  const [draggedCategory, setDraggedCategory] = useState<string | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAddingAgent, setIsAddingAgent] = useState(false);
+  const [isAddingCategory, setIsAddingCategory] = useState(false);
   const [editingAgent, setEditingAgent] = useState<Agent | null>(null);
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [saving, setSaving] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
   const [filterStatus, setFilterStatus] = useState('all');
   const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null);
   const [currentTagInput, setCurrentTagInput] = useState('');
+  const [newCategory, setNewCategory] = useState<Partial<Category>>({
+    label: '',
+    icon: 'TrendingUp',
+    color: 'text-blue-600'
+  });
   const [newAgent, setNewAgent] = useState<Partial<Agent>>({
     name: '',
     category: 'sales',
@@ -27,12 +50,16 @@ const AdminSettings: React.FC = () => {
     status: 'coming_soon'
   });
 
-  const categories = [
-    { id: 'sales', label: 'Sales' },
-    { id: 'marketing', label: 'Marketing' },
-    { id: 'customer-service', label: 'Customer Service' },
-    { id: 'hr', label: 'HR' },
-    { id: 'finance', label: 'Finance' }
+  const availableIcons = Object.keys(iconMap);
+  const colorOptions = [
+    { value: 'text-blue-600', label: 'Blue' },
+    { value: 'text-green-600', label: 'Green' },
+    { value: 'text-purple-600', label: 'Purple' },
+    { value: 'text-orange-600', label: 'Orange' },
+    { value: 'text-red-600', label: 'Red' },
+    { value: 'text-indigo-600', label: 'Indigo' },
+    { value: 'text-pink-600', label: 'Pink' },
+    { value: 'text-yellow-600', label: 'Yellow' }
   ];
 
   const statusOptions = [

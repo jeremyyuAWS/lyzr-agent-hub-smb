@@ -1,21 +1,29 @@
 import React from 'react';
-import { TrendingUp, Users, Headphones, UserCheck, DollarSign, Megaphone } from 'lucide-react';
+
+interface Category {
+  id: string;
+  label: string;
+  icon: string;
+  color: string;
+}
 
 interface SidebarProps {
   activeCategory: string;
   onCategoryChange: (category: string) => void;
   activeTab: string;
   onTabChange: (tab: string) => void;
+  categories: Category[];
+  iconMap: Record<string, React.ComponentType<{ className?: string }>>;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeCategory, onCategoryChange, activeTab, onTabChange }) => {
-  const categories = [
-    { id: 'sales', label: 'Sales', icon: TrendingUp, color: 'text-blue-600' },
-    { id: 'marketing', label: 'Marketing', icon: Megaphone, color: 'text-green-600' },
-    { id: 'customer-service', label: 'Customer Service', icon: Headphones, color: 'text-purple-600' },
-    { id: 'hr', label: 'HR', icon: UserCheck, color: 'text-orange-600' },
-    { id: 'finance', label: 'Finance', icon: DollarSign, color: 'text-red-600' },
-  ];
+const Sidebar: React.FC<SidebarProps> = ({ 
+  activeCategory, 
+  onCategoryChange, 
+  activeTab, 
+  onTabChange, 
+  categories,
+  iconMap 
+}) => {
 
   const handleCategoryClick = (categoryId: string) => {
     onCategoryChange(categoryId);
@@ -40,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeCategory, onCategoryChange, act
       
       <nav className="space-y-2">
         {categories.map((category) => {
-          const Icon = category.icon;
+          const Icon = iconMap[category.icon] || iconMap.TrendingUp;
           return (
             <button
               key={category.id}
