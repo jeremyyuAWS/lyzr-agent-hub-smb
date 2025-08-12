@@ -184,9 +184,16 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
   };
 
   const toggleReorderMode = () => {
-    setIsReorderMode(!isReorderMode);
-    if (!isReorderMode && filterCategory === 'all') {
-      setFilterCategory('sales'); // Switch to a specific category for reordering
+    if (!isReorderMode) {
+      // Entering reorder mode
+      if (filterCategory === 'all') {
+        const firstCategory = categories[0]?.id || 'sales';
+        setFilterCategory(firstCategory);
+      }
+      setIsReorderMode(true);
+    } else {
+      // Exiting reorder mode
+      setIsReorderMode(false);
     }
   };
   const showNotification = (type: 'success' | 'error', message: string) => {
@@ -803,12 +810,11 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleReorderMode}
-              disabled={filterCategory === 'all'}
               className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                 isReorderMode 
                   ? 'bg-blue-600 text-white' 
                   : 'bg-white border border-gray-300 text-black hover:bg-gray-50'
-              } ${filterCategory === 'all' ? 'opacity-50 cursor-not-allowed' : ''}`}
+              }`}
             >
               {isReorderMode ? 'Exit Reorder' : 'Reorder Agents'}
             </button>
@@ -821,6 +827,12 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
                 Reset to Alphabetical
               </button>
             )}
+            
+            {filterCategory === 'all' && !isReorderMode && (
+              <p className="text-sm text-gray-500 italic">
+                Select a category to enable reordering
+              </p>
+            )}
           </div>
           
           <div className="text-sm text-gray-600">
@@ -832,7 +844,7 @@ const AdminSettings: React.FC<AdminSettingsProps> = ({ categories, onUpdateCateg
           <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <p className="text-sm text-blue-800">
               <strong>Reorder Mode:</strong> {filterCategory === 'all' 
-                ? 'Select a specific category to reorder agents' 
+                ? 'Category automatically selected for reordering' 
                 : 'Drag and drop agents to reorder them within this category'}
             </p>
           </div>
