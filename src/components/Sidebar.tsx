@@ -47,6 +47,28 @@ const Sidebar: React.FC<SidebarProps> = ({
       </div>
       
       <nav className="space-y-2">
+        {/* All Categories Tab */}
+        <button
+          onClick={() => handleCategoryClick('all')}
+          className={`w-full flex items-center space-x-3 px-3 py-3 rounded-lg text-left transition-colors ${
+            activeCategory === 'all' && activeTab === 'agents'
+              ? 'bg-gray-100 text-black font-medium'
+              : 'text-gray-600 hover:bg-gray-50 hover:text-black'
+          }`}
+        >
+          <div className="w-5 h-5 grid grid-cols-2 gap-0.5">
+            <div className="w-2 h-2 bg-blue-500 rounded-sm"></div>
+            <div className="w-2 h-2 bg-green-500 rounded-sm"></div>
+            <div className="w-2 h-2 bg-purple-500 rounded-sm"></div>
+            <div className="w-2 h-2 bg-orange-500 rounded-sm"></div>
+          </div>
+          <span>All Categories</span>
+        </button>
+        
+        {/* Divider */}
+        <div className="border-t border-gray-200 my-3"></div>
+        
+        {/* Individual Categories */}
         {categories.map((category) => {
           const Icon = iconMap[category.icon] || iconMap.TrendingUp;
           return (
